@@ -1,8 +1,9 @@
 {
   "name": "ventrata-utils",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Ventrata utils",
   "main": "dist/index.js",
+  "typings": "dist/declares/main.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,7 +13,9 @@
   "author": "Kosolapov Ivan <polzuka@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.23.0",
+    "common-utils": "https://github.com/pixelpylon/common-utils/tarball/v1.4.9",
     "lodash": "^4.17.21",
-    "common-utils": "https://github.com/pixelpylon/common-utils/tarball/v1.4.9"
+    "moment": "^2.29.1"
   }
 }
