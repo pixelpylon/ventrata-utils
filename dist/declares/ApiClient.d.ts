@@ -50,10 +50,21 @@ interface IConfirmBooking {
     country: string
 }
 
+interface IGetBookings {
+    resellerReference?: string,
+    supplierReference?: string,
+    localDate?: string,
+    localDateStart?: string,
+    localDateEnd?: string,
+    productId?: string,
+    optionId?: string,
+}
+
 export declare class ApiClient {
     constructor (apiKey: string)
     getProduct (productId: string): Promise<Entities.IProduct>
     getBooking (bookingUuid: string): Promise<Entities.IBooking>
+    getBookings ({resellerReference, supplierReference, localDate, localDateStart, localDateEnd, productId, optionId}: IGetBookings): Promise<Entities.IBooking[]>
     getCalendar ({productId, optionId, units, localDateStart, localDateEnd}: IGetCalendar): Promise<Entities.ICalendarDay[]>
     getAvailabilities ({productId, optionId, units, localDateStart, localDateEnd}: IGetAvailabilities): Promise<Entities.ICalendarDay[]>
     getMonthCalendar ({productId, optionId, units, month, year}: IGetMonthCalendar): Promise<Entities.ICalendarDay[]>

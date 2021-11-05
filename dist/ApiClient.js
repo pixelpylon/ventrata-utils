@@ -22,6 +22,21 @@ class ApiClient {
     return booking
   }
 
+  async getBookings ({resellerReference, supplierReference, localDate, localDateStart, localDateEnd, productId, optionId}) {
+    const {data: bookings} = await this.axiosInstance.get(`bookings`, {
+      params: {
+        resellerReference,
+        supplierReference,
+        localDate,
+        localDateStart,
+        localDateEnd,
+        productId,
+        optionId,
+      },
+    })
+    return bookings
+  }
+
   async getCalendar ({productId, optionId, units, localDateStart, localDateEnd}) {
     const {data: calendar} = await this.axiosInstance.post(`availability/calendar`, {
       productId,
