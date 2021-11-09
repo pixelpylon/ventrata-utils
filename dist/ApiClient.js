@@ -1,6 +1,6 @@
 const axios = require("axios")
 const moment = require("moment")
-const {times} = require("lodash")
+const {times, get} = require("lodash")
 
 const DATE_FORMAT = 'YYYY-MM-DD'
 
@@ -12,18 +12,27 @@ class ApiClient {
     })
   }
 
-  async getProduct (productId) {
-    const {data: product} = await this.axiosInstance.get(`products/${productId}`)
-    return product
+  async _makeRequest (method, ...other) {
+    try {
+      const {data} = await this.axiosInstance[method](...other)
+      return data
+    } catch (error) {
+      const data = get(error, 'response.data')
+      const message = data && JSON.stringify(data) || error.message
+      throw new Error(message)
+    }
   }
 
-  async getBooking (bookingUuid) {
-    const {data: booking} = await this.axiosInstance.get(`bookings/${bookingUuid}`)
-    return booking
+  getProduct (productId) {
+    return this._makeRequest('get', `products/${productId}`)
   }
 
-  async getBookings ({resellerReference, supplierReference, localDate, localDateStart, localDateEnd, productId, optionId}) {
-    const {data: bookings} = await this.axiosInstance.get(`bookings`, {
+  getBooking (bookingUuid) {
+    return this._makeRequest('get',`bookings/${bookingUuid}`)
+  }
+
+  getBookings ({resellerReference, supplierReference, localDate, localDateStart, localDateEnd, productId, optionId}) {
+    return this._makeRequest('get',`bookings`, {
       params: {
         resellerReference,
         supplierReference,
@@ -34,31 +43,26 @@ class ApiClient {
         optionId,
       },
     })
-    return bookings
   }
 
-  async getCalendar ({productId, optionId, units, localDateStart, localDateEnd}) {
-    const {data: calendar} = await this.axiosInstance.post(`availability/calendar`, {
+  getCalendar ({productId, optionId, units, localDateStart, localDateEnd}) {
+    return this._makeRequest('post',`availability/calendar`, {
       productId,
       optionId,
       localDateStart,
       localDateEnd,
       units,
     })
-
-    return calendar
   }
 
-  async getAvailabilities ({productId, optionId, units, localDateStart, localDateEnd}) {
-    const {data: availabilities} = await this.axiosInstance.post(`availability`, {
+  getAvailabilities ({productId, optionId, units, localDateStart, localDateEnd}) {
+    return this._makeRequest('post',`availability`, {
       productId,
       optionId,
       localDateStart,
       localDateEnd,
       units,
     })
-
-    return availabilities
   }
 
   getMonthCalendar ({productId, optionId, units, year, month}) {
@@ -86,8 +90,8 @@ class ApiClient {
     })
   }
 
-  async createBooking ({productId, optionId, availabilityId, units, notes}) {
-    const {data: booking} = await this.axiosInstance.post(`/bookings`,
+  createBooking ({productId, optionId, availabilityId, units, notes}) {
+    return this._makeRequest('post',`/bookings`,
       {
         productId,
         optionId,
@@ -100,12 +104,10 @@ class ApiClient {
         }, [])
       }
     )
-
-    return booking
   }
 
-  async confirmBooking ({bookingUuid, emailAddress, fullName, phoneNumber, locales, country}) {
-    const {data: booking} = await this.axiosInstance.post(`/bookings/${bookingUuid}/confirm`,
+  confirmBooking ({bookingUuid, emailAddress, fullName, phoneNumber, locales, country}) {
+    return this._makeRequest('post',`/bookings/${bookingUuid}/confirm`,
       {
         contact: {
           fullName,
@@ -116,8 +118,6 @@ class ApiClient {
         }
       }
     )
-
-    return booking
   }
 }
 
