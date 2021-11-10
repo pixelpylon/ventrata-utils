@@ -53,11 +53,6 @@ interface IUpdateBooking {
 
 interface ICancelBooking {
     bookingUuid: string
-    productId: string
-    optionId: string
-    availabilityId: string
-    units: Entities.IUnitCounter[]
-    notes?: string
 }
 
 interface IConfirmBooking {
