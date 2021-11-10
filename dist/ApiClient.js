@@ -1,6 +1,7 @@
 const axios = require("axios")
 const moment = require("moment")
-const {times, get} = require("lodash")
+const {times} = require("lodash")
+const ApiError = require("./ApiError");
 
 const DATE_FORMAT = 'YYYY-MM-DD'
 
@@ -17,9 +18,7 @@ class ApiClient {
       const {data} = await this.axiosInstance[method](...other)
       return data
     } catch (error) {
-      const data = get(error, 'response.data')
-      const message = data && JSON.stringify(data) || error.message
-      throw new Error(message)
+      throw new ApiError(error)
     }
   }
 
