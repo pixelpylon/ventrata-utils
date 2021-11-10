@@ -90,9 +90,10 @@ class ApiClient {
     })
   }
 
-  createBooking ({productId, optionId, availabilityId, units, notes}) {
+  createBooking ({bookingUuid, productId, optionId, availabilityId, units, notes}) {
     return this._makeRequest('post',`/bookings`,
       {
+        uuid: bookingUuid,
         productId,
         optionId,
         availabilityId,
@@ -117,6 +118,29 @@ class ApiClient {
           country,
         }
       }
+    )
+  }
+
+  updateBooking ({bookingUuid, productId, optionId, availabilityId, units, notes}) {
+    return this._makeRequest('patch',`/bookings/${bookingUuid}`,
+      {
+        uuid: bookingUuid,
+        productId,
+        optionId,
+        availabilityId,
+        notes,
+        unitItems: units.reduce((result , unitCounter) => {
+          const unitItems = times(unitCounter.quantity, () => ({unitId: unitCounter.id}))
+          result.push(...unitItems)
+          return result
+        }, [])
+      }
+    )
+  }
+
+  cancelBooking ({bookingUuid}) {
+    return this._makeRequest('delete',`/bookings/${bookingUuid}`,
+      {}
     )
   }
 }
