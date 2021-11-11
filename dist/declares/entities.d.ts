@@ -89,7 +89,7 @@ export namespace Entities {
         available: boolean
         capacity: number
         localDate: string
-        status: string
+        status: AVAILABILITY_STATUSES_UNION
         vacancies: number
     }
 }
