@@ -1,3 +1,5 @@
+import {AVAILABILITY_STATUSES_UNION, BOOKING_STATUSES_UNION} from "./consts";
+
 export namespace Entities {
     export interface IPricing {
         original: number
@@ -59,7 +61,7 @@ export namespace Entities {
         supplierReference: string
         uuid: string
         availabilityId: string
-        status: string
+        status: BOOKING_STATUSES_UNION
         contact: IContact
         product: IProduct
         option: IOption,
@@ -74,7 +76,7 @@ export namespace Entities {
         localDateTimeStart: string
         available: boolean
         capacity: number
-        status: string
+        status: AVAILABILITY_STATUSES_UNION
         id: string
     }
 

@@ -9,6 +9,7 @@ const ApiClient = require('./ApiClient');
 const {
   VISITOR_AGES,
   BOOKING_STATUSES,
+  AVAILABILITY_STATUSES,
 } = require('./consts');
 
 module.exports = {
@@ -19,6 +20,7 @@ module.exports = {
   ApiClient,
   VISITOR_AGES,
   BOOKING_STATUSES,
+  AVAILABILITY_STATUSES,
   getProductName,
   getOptionName,
   getUnitName
