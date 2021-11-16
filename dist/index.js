@@ -6,6 +6,7 @@ const getProductName = require('./getProductName');
 const getOptionName = require('./getOptionName');
 const getUnitName = require('./getUnitName');
 const ApiClient = require('./ApiClient');
+const ApiError = require('./ApiError');
 const {
   VISITOR_AGES,
   BOOKING_STATUSES,
@@ -18,10 +19,11 @@ module.exports = {
   getEmptyVisitorCounters,
   formatVisitorCounters,
   ApiClient,
+  ApiError,
   VISITOR_AGES,
   BOOKING_STATUSES,
   AVAILABILITY_STATUSES,
   getProductName,
   getOptionName,
-  getUnitName
+  getUnitName,
 };
