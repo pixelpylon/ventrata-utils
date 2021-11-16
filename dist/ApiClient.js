@@ -106,7 +106,7 @@ class ApiClient {
     )
   }
 
-  confirmBooking ({bookingUuid, emailAddress, fullName, phoneNumber, locales, country}) {
+  confirmBooking ({bookingUuid, emailAddress, fullName, phoneNumber, locales, country, resellerReference}) {
     return this._makeRequest('post',`/bookings/${bookingUuid}/confirm`,
       {
         contact: {
@@ -115,7 +115,8 @@ class ApiClient {
           phoneNumber,
           locales,
           country,
-        }
+        },
+        resellerReference,
       }
     )
   }

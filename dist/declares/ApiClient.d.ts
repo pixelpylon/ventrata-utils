@@ -62,6 +62,7 @@ interface IConfirmBooking {
     phoneNumber: string
     locales: string[]
     country: string
+    resellerReference?: string
 }
 
 interface IGetBookings {
