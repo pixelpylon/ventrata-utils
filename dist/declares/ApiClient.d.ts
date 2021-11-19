@@ -66,13 +66,15 @@ interface IConfirmBooking {
 }
 
 interface IGetBookings {
-    resellerReference?: string,
-    supplierReference?: string,
-    localDate?: string,
-    localDateStart?: string,
-    localDateEnd?: string,
-    productId?: string,
-    optionId?: string,
+    resellerReference?: string
+    supplierReference?: string
+    localDate?: string
+    localDateStart?: string
+    localDateEnd?: string
+    productId?: string
+    optionId?: string
+    utcCreatedAtStart?: string
+    utcCreatedAtEnd?: string
 }
 
 export declare class ApiClient {

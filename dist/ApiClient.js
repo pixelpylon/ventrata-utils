@@ -30,7 +30,17 @@ class ApiClient {
     return this._makeRequest('get',`bookings/${bookingUuid}`)
   }
 
-  getBookings ({resellerReference, supplierReference, localDate, localDateStart, localDateEnd, productId, optionId}) {
+  getBookings ({
+      resellerReference,
+      supplierReference,
+      localDate,
+      localDateStart,
+      localDateEnd,
+      productId,
+      optionId,
+      utcCreatedAtStart,
+      utcCreatedAtEnd,
+  }) {
     return this._makeRequest('get',`bookings`, {
       params: {
         resellerReference,
@@ -40,6 +50,8 @@ class ApiClient {
         localDateEnd,
         productId,
         optionId,
+        utcCreatedAtStart,
+        utcCreatedAtEnd,
       },
     })
   }
