@@ -83,9 +83,9 @@ export declare class ApiClient {
     getBooking (bookingUuid: string): Promise<Entities.IBooking>
     getBookings ({resellerReference, supplierReference, localDate, localDateStart, localDateEnd, productId, optionId}: IGetBookings): Promise<Entities.IBooking[]>
     getCalendar ({productId, optionId, units, localDateStart, localDateEnd}: IGetCalendar): Promise<Entities.ICalendarDay[]>
-    getAvailabilities ({productId, optionId, units, localDateStart, localDateEnd}: IGetAvailabilities): Promise<Entities.ICalendarDay[]>
+    getAvailabilities ({productId, optionId, units, localDateStart, localDateEnd}: IGetAvailabilities): Promise<Entities.IAvailability[]>
     getMonthCalendar ({productId, optionId, units, month, year}: IGetMonthCalendar): Promise<Entities.ICalendarDay[]>
-    getDateAvailabilities ({productId, optionId, units, month, year, date}: IGetDateAvailabilities): Promise<Entities.ICalendarDay>
+    getDateAvailabilities ({productId, optionId, units, month, year, date}: IGetDateAvailabilities): Promise<Entities.IAvailability[]>
     createBooking ({bookingUuid, productId, optionId, availabilityId, units, notes}: ICreateBooking): Promise<Entities.IBooking>
     confirmBooking ({bookingUuid, emailAddress, fullName, phoneNumber, locales, country}: IConfirmBooking): Promise<Entities.IBooking>
     updateBooking ({bookingUuid, productId, optionId, availabilityId, units, notes}: IUpdateBooking): Promise<Entities.IBooking>

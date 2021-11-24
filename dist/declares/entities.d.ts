@@ -92,4 +92,12 @@ export namespace Entities {
         status: AVAILABILITY_STATUSES_UNION
         vacancies: number
     }
+
+    export interface ICalendarDay {
+        available: boolean
+        capacity: number
+        localDate: string
+        status: AVAILABILITY_STATUSES_UNION
+        vacancies: number
+    }
 }
