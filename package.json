@@ -1,6 +1,6 @@
 {
   "name": "ventrata-utils",
-  "version": "1.0.23",
+  "version": "1.0.24",
   "description": "Ventrata utils",
   "main": "dist/index.js",
   "typings": "dist/declares/main.d.ts",
@@ -14,6 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.23.0",
+    "axios-retry": "^3.2.4",
     "common-utils": "https://github.com/pixelpylon/common-utils/tarball/v1.4.12",
     "lodash": "^4.17.21",
     "moment": "^2.29.1"

@@ -1,15 +1,21 @@
 const axios = require("axios")
+const axiosRetry = require('axios-retry')
 const moment = require("moment")
 const {times} = require("lodash")
-const ApiError = require("./ApiError");
+const ApiError = require("./ApiError")
 
 const DATE_FORMAT = 'YYYY-MM-DD'
 
 class ApiClient {
   constructor (apiKey) {
-    this.axiosInstance = axios.create({
+    const axiosInstance = axios.create({
       baseURL: 'https://api.ventrata.com/octo/',
       headers: {Authorization: `Bearer ${apiKey}`}
+    })
+
+    this.axiosInstance = axiosRetry(axiosInstance, {
+      retries: 3,
+      retryDelay: axiosRetry.exponentialDelay,
     })
   }
 
