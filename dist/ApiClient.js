@@ -8,12 +8,12 @@ const DATE_FORMAT = 'YYYY-MM-DD'
 
 class ApiClient {
   constructor (apiKey) {
-    const axiosInstance = axios.create({
+    this.axiosInstance = axios.create({
       baseURL: 'https://api.ventrata.com/octo/',
       headers: {Authorization: `Bearer ${apiKey}`}
     })
 
-    this.axiosInstance = axiosRetry(axiosInstance, {
+    axiosRetry(this.axiosInstance, {
       retries: 3,
       retryDelay: axiosRetry.exponentialDelay,
     })
