@@ -2,38 +2,31 @@ const axios = require("axios")
 const axiosRetry = require('axios-retry')
 const moment = require("moment")
 const {times} = require("lodash")
-const ApiError = require("./ApiError")
+const {AxiosApiClient} = require("common-utils")
 
 const DATE_FORMAT = 'YYYY-MM-DD'
 
 class ApiClient {
   constructor (apiKey) {
-    this.axiosInstance = axios.create({
+    const axiosInstance = axios.create({
       baseURL: 'https://api.ventrata.com/octo/',
       headers: {Authorization: `Bearer ${apiKey}`}
     })
 
-    axiosRetry(this.axiosInstance, {
+    axiosRetry(axiosInstance, {
       retries: 3,
       retryDelay: axiosRetry.exponentialDelay,
     })
-  }
 
-  async _makeRequest (method, ...other) {
-    try {
-      const {data} = await this.axiosInstance[method](...other)
-      return data
-    } catch (error) {
-      throw new ApiError(error)
-    }
+    this.axiosApiClient = new AxiosApiClient(axiosInstance)
   }
 
   getProduct (productId) {
-    return this._makeRequest('get', `products/${productId}`)
+    return this.axiosApiClient.get(`products/${productId}`)
   }
 
   getBooking (bookingUuid) {
-    return this._makeRequest('get',`bookings/${bookingUuid}`)
+    return this.axiosApiClient.get(`bookings/${bookingUuid}`)
   }
 
   getBookings ({
@@ -47,7 +40,7 @@ class ApiClient {
       utcCreatedAtStart,
       utcCreatedAtEnd,
   }) {
-    return this._makeRequest('get',`bookings`, {
+    return this.axiosApiClient.get(`bookings`, {
       params: {
         resellerReference,
         supplierReference,
@@ -63,7 +56,7 @@ class ApiClient {
   }
 
   getCalendar ({productId, optionId, units, localDateStart, localDateEnd}) {
-    return this._makeRequest('post',`availability/calendar`, {
+    return this.axiosApiClient.post(`availability/calendar`, {
       productId,
       optionId,
       localDateStart,
@@ -73,7 +66,7 @@ class ApiClient {
   }
 
   getAvailabilities ({productId, optionId, units, localDateStart, localDateEnd}) {
-    return this._makeRequest('post',`availability`, {
+    return this.axiosApiClient.post('post',`availability`, {
       productId,
       optionId,
       localDateStart,
@@ -108,7 +101,7 @@ class ApiClient {
   }
 
   createBooking ({bookingUuid, productId, optionId, availabilityId, units, notes}) {
-    return this._makeRequest('post',`/bookings`,
+    return this.axiosApiClient.post(`/bookings`,
       {
         uuid: bookingUuid,
         productId,
@@ -125,7 +118,7 @@ class ApiClient {
   }
 
   confirmBooking ({bookingUuid, emailAddress, fullName, phoneNumber, locales, country, resellerReference}) {
-    return this._makeRequest('post',`/bookings/${bookingUuid}/confirm`,
+    return this.axiosApiClient.post(`/bookings/${bookingUuid}/confirm`,
       {
         contact: {
           fullName,
@@ -140,7 +133,7 @@ class ApiClient {
   }
 
   updateBooking ({bookingUuid, productId, optionId, availabilityId, units, notes}) {
-    return this._makeRequest('patch',`/bookings/${bookingUuid}`,
+    return this.axiosApiClient.patch(`/bookings/${bookingUuid}`,
       {
         uuid: bookingUuid,
         productId,
@@ -157,9 +150,7 @@ class ApiClient {
   }
 
   cancelBooking ({bookingUuid}) {
-    return this._makeRequest('delete',`/bookings/${bookingUuid}`,
-      {}
-    )
+    return this.axiosApiClient.delete(`/bookings/${bookingUuid}`)
   }
 }
 

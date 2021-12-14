@@ -1,4 +1,4 @@
-import {Entities} from "./entities";
+import {Entities} from "./entities"
 
 interface IGetCalendar {
     productId: string
@@ -46,8 +46,8 @@ interface IUpdateBooking {
     bookingUuid: string
     productId: string
     optionId: string
-    availabilityId: string
-    units: Entities.IUnitCounter[]
+    availabilityId?: string
+    units?: Entities.IUnitCounter[]
     notes?: string
 }
 
