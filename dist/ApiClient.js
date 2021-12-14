@@ -6,6 +6,14 @@ const {AxiosApiClient} = require("common-utils")
 
 const DATE_FORMAT = 'YYYY-MM-DD'
 
+const deconvoluteUnits = (units) => {
+    return units.reduce((result, unitCounter) => {
+        const unitItems = times(unitCounter.quantity, () => ({unitId: unitCounter.id}))
+        result.push(...unitItems)
+        return result
+    }, [])
+}
+
 class ApiClient {
     constructor(apiKey) {
         const axiosInstance = axios.create({
@@ -113,11 +121,7 @@ class ApiClient {
                 optionId,
                 availabilityId,
                 notes,
-                unitItems: units.reduce((result, unitCounter) => {
-                    const unitItems = times(unitCounter.quantity, () => ({unitId: unitCounter.id}))
-                    result.push(...unitItems)
-                    return result
-                }, [])
+                unitItems: deconvoluteUnits(units)
             }
         )
             .then(({data}) => data)
@@ -147,11 +151,7 @@ class ApiClient {
                 optionId,
                 availabilityId,
                 notes,
-                unitItems: units.reduce((result, unitCounter) => {
-                    const unitItems = times(unitCounter.quantity, () => ({unitId: unitCounter.id}))
-                    result.push(...unitItems)
-                    return result
-                }, [])
+                unitItems: units ? deconvoluteUnits(units) : undefined
             }
         )
             .then(({data}) => data)
