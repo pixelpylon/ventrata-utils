@@ -46,6 +46,7 @@ export namespace Entities {
     }
 
     export interface IProduct {
+        id: string
         title: string
         internalName: string
         reference: string
@@ -70,6 +71,7 @@ export namespace Entities {
         availability: IAvailability
         reseller: IReseller | null
         notes: string
+        utcUpdatedAt: string
     }
 
     export interface IAvailability {
