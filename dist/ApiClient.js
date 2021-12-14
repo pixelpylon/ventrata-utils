@@ -18,7 +18,7 @@ class ApiClient {
       retryDelay: axiosRetry.exponentialDelay,
     })
 
-    this.axiosApiClient = new AxiosApiClient(axiosInstance)
+    this.axiosApiClient = AxiosApiClient(axiosInstance)
   }
 
   getProduct (productId) {
