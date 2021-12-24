@@ -78,7 +78,7 @@ class ApiClient {
     }
 
     getAvailabilities({productId, optionId, units, localDateStart, localDateEnd}) {
-        return this.axiosApiClient.post('post', `availability`, {
+        return this.axiosApiClient.post( `availability`, {
             productId,
             optionId,
             localDateStart,
