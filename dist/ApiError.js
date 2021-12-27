@@ -1,3 +1,3 @@
-const {ApiError} = require("common-utils");
+const {AxiosApiError} = require("common-utils");
 
-module.exports = ApiError;
+module.exports = AxiosApiError;

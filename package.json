@@ -15,7 +15,7 @@
   "dependencies": {
     "axios": "^0.23.0",
     "axios-retry": "^3.2.4",
-    "common-utils": "https://github.com/pixelpylon/common-utils/tarball/v1.4.15",
+    "common-utils": "https://github.com/pixelpylon/common-utils/tarball/6b3ca36",
     "lodash": "^4.17.21",
     "moment": "^2.29.1"
   }
