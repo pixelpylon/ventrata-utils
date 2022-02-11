@@ -40,6 +40,7 @@ interface ICreateBooking {
     availabilityId: string
     units: Entities.IUnitCounter[]
     notes?: string
+    answers?: Entities.IAnswer[]
 }
 
 interface IUpdateBooking {
@@ -86,7 +87,7 @@ export declare class ApiClient {
     getAvailabilities ({productId, optionId, units, localDateStart, localDateEnd}: IGetAvailabilities): Promise<Entities.IAvailability[]>
     getMonthCalendar ({productId, optionId, units, month, year}: IGetMonthCalendar): Promise<Entities.ICalendarDay[]>
     getDateAvailabilities ({productId, optionId, units, month, year, date}: IGetDateAvailabilities): Promise<Entities.IAvailability[]>
-    createBooking ({bookingUuid, productId, optionId, availabilityId, units, notes}: ICreateBooking): Promise<Entities.IBooking>
+    createBooking ({bookingUuid, productId, optionId, availabilityId, units, notes, answers}: ICreateBooking): Promise<Entities.IBooking>
     confirmBooking ({bookingUuid, emailAddress, fullName, phoneNumber, locales, country}: IConfirmBooking): Promise<Entities.IBooking>
     updateBooking ({bookingUuid, productId, optionId, availabilityId, units, notes}: IUpdateBooking): Promise<Entities.IBooking>
     cancelBooking ({bookingUuid}: ICancelBooking): Promise<Entities.IBooking>

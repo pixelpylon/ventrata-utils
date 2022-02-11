@@ -6,6 +6,11 @@ export namespace Entities {
         currency: string
     }
 
+    export interface IAnswer {
+        questionId: string
+        value: string
+    }
+
     export interface IUnitItem {
         unitId: string
         unit: IUnit

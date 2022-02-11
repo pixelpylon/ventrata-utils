@@ -113,7 +113,7 @@ class ApiClient {
         })
     }
 
-    createBooking({bookingUuid, productId, optionId, availabilityId, units, notes}) {
+    createBooking({bookingUuid, productId, optionId, availabilityId, units, notes, answers}) {
         return this.axiosApiClient.post(`/bookings`,
             {
                 uuid: bookingUuid,
@@ -121,7 +121,8 @@ class ApiClient {
                 optionId,
                 availabilityId,
                 notes,
-                unitItems: deconvoluteUnits(units)
+                unitItems: deconvoluteUnits(units),
+                questionAnswers: answers,
             }
         )
             .then(({data}) => data)
