@@ -10,6 +10,7 @@ const {getUnitMapping, getUnitMapper} = require('./unitMapping');
 const ApiClient = require('./ApiClient');
 const ApiError = require('./ApiError');
 const {
+  UNIT_TYPES,
   VISITOR_AGES,
   BOOKING_STATUSES,
   AVAILABILITY_STATUSES,
@@ -26,6 +27,7 @@ module.exports = {
   VISITOR_AGES,
   BOOKING_STATUSES,
   AVAILABILITY_STATUSES,
+  UNIT_TYPES,
   getProductName,
   getOptionName,
   getUnitName,
