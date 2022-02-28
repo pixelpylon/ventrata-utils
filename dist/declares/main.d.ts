@@ -4,6 +4,7 @@ export {
     getProductName,
     getOptionName,
     getUnitName,
+    getUnitMapping,
 } from "./functions"
 export {
     AVAILABILITY_STATUSES,
