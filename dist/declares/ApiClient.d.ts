@@ -79,7 +79,7 @@ interface IGetBookings {
 }
 
 export declare class ApiClient {
-    constructor (apiKey: string)
+    constructor (apiKey: string, url?: string)
     getProduct (productId: string): Promise<Entities.IProduct>
     getBooking (bookingUuid: string): Promise<Entities.IBooking>
     getBookings ({resellerReference, supplierReference, localDate, localDateStart, localDateEnd, productId, optionId}: IGetBookings): Promise<Entities.IBooking[]>

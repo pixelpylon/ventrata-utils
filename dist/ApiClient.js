@@ -15,9 +15,9 @@ const deconvoluteUnits = (units) => {
 }
 
 class ApiClient {
-    constructor(apiKey) {
+    constructor(apiKey, url = undefined) {
         const axiosInstance = axios.create({
-            baseURL: 'https://api.ventrata.com/octo/',
+            baseURL: url || 'https://api.ventrata.com/octo/',
             headers: {Authorization: `Bearer ${apiKey}`}
         })
 
