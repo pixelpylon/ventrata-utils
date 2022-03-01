@@ -88,7 +88,7 @@ export namespace Entities {
     }
 
     export interface IUnitCounter {
-        id: string
+        type: string
         quantity: number
     }
 
