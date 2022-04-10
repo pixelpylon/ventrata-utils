@@ -5,4 +5,4 @@ export type UNIT_TYPES_UNION = 'ADULT' | 'CHILD' | 'INFANT'
 export declare const BOOKING_STATUSES: {[key in BOOKING_STATUSES_UNION]: BOOKING_STATUSES_UNION}
 export declare const AVAILABILITY_STATUSES: {[key in AVAILABILITY_STATUSES_UNION]: AVAILABILITY_STATUSES_UNION}
 export declare const UNIT_TYPES: {[key in UNIT_TYPES_UNION]: UNIT_TYPES_UNION}
-export declare const DEFAULT_OPTION
+export declare const DEFAULT_OPTION: string
