@@ -101,6 +101,19 @@ class ApiClient {
         })
     }
 
+    getMonthAvailabilities({productId, optionId, units, year, month}) {
+        const startDate = moment({year, month, date: 1})
+        const endDate = moment({year, month, date: startDate.daysInMonth()})
+
+        return this.getAvailabilities({
+            productId,
+            optionId,
+            localDateStart: startDate.format(DATE_FORMAT),
+            localDateEnd: endDate.format(DATE_FORMAT),
+            units,
+        })
+    }
+
     getDateAvailabilities({productId, optionId, units, month, year, date}) {
         const localDate = moment({year, month, date}).format(DATE_FORMAT)
 
