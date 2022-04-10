@@ -14,6 +14,7 @@ const {
   VISITOR_AGES,
   BOOKING_STATUSES,
   AVAILABILITY_STATUSES,
+  DEFAULT_OPTION,
 } = require('./consts');
 
 module.exports = {
@@ -28,6 +29,7 @@ module.exports = {
   BOOKING_STATUSES,
   AVAILABILITY_STATUSES,
   UNIT_TYPES,
+  DEFAULT_OPTION,
   getProductName,
   getOptionName,
   getUnitName,
