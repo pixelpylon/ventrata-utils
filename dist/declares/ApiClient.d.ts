@@ -53,8 +53,8 @@ interface ICreateBooking {
 
 interface IUpdateBooking {
     bookingUuid: string
-    productId: string
-    optionId: string
+    productId?: string
+    optionId?: string
     availabilityId?: string
     units?: Entities.IUnitCounter[]
     notes?: string
