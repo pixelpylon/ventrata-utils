@@ -141,7 +141,7 @@ class ApiClient {
             .then(({data}) => data)
     }
 
-    confirmBooking({bookingUuid, emailAddress, fullName, phoneNumber, locales, country, resellerReference}) {
+    confirmBooking({bookingUuid, emailAddress, fullName, phoneNumber, locales, country, resellerReference, cardPayment}) {
         return this.axiosApiClient.post(`/bookings/${bookingUuid}/confirm`,
             {
                 contact: {
@@ -152,6 +152,7 @@ class ApiClient {
                     country,
                 },
                 resellerReference,
+                cardPayment,
             }
         )
             .then(({data}) => data)

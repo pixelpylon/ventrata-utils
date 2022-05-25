@@ -64,6 +64,13 @@ interface ICancelBooking {
     bookingUuid: string
 }
 
+interface ICardPayment {
+    gateway: string
+    amount: number
+    currency: string
+    notes?: string
+}
+
 interface IConfirmBooking {
     bookingUuid: string
     fullName: string
@@ -72,6 +79,7 @@ interface IConfirmBooking {
     locales: string[]
     country: string
     resellerReference?: string
+    cardPayment?: ICardPayment
 }
 
 interface IGetBookings {
@@ -97,7 +105,7 @@ export declare class ApiClient {
     getDateAvailabilities ({productId, optionId, units, month, year, date}: IGetDateAvailabilities): Promise<Entities.IAvailability[]>
     getMonthAvailabilities ({productId, optionId, units, month, year}: IGetMonthAvailabilities): Promise<Entities.IAvailability[]>
     createBooking ({bookingUuid, productId, optionId, availabilityId, units, notes, answers}: ICreateBooking): Promise<Entities.IBooking>
-    confirmBooking ({bookingUuid, emailAddress, fullName, phoneNumber, locales, country}: IConfirmBooking): Promise<Entities.IBooking>
+    confirmBooking ({bookingUuid, emailAddress, fullName, phoneNumber, locales, country, resellerReference, cardPayment}: IConfirmBooking): Promise<Entities.IBooking>
     updateBooking ({bookingUuid, productId, optionId, availabilityId, units, notes}: IUpdateBooking): Promise<Entities.IBooking>
     cancelBooking ({bookingUuid}: ICancelBooking): Promise<Entities.IBooking>
 }
