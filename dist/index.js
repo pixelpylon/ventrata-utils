@@ -16,7 +16,7 @@ const {
   AVAILABILITY_STATUSES,
   DEFAULT_OPTION,
 } = require('./consts');
-const {getProductAndOption} = require("../getProductAndOption");
+const {getProductAndOption} = require("./getProductAndOption");
 
 module.exports = {
   getPhone,
