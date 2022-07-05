@@ -65,6 +65,7 @@ export namespace Entities {
 
     export interface IBooking {
         supplierReference: string
+        resellerReference?: string
         uuid: string
         availabilityId: string
         status: BOOKING_STATUSES_UNION

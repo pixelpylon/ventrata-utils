@@ -6,10 +6,12 @@ export {
     getUnitName,
     getUnitMapping,
     getUnitMapper,
+    adaptUnits,
     formatVisitorCounters,
     getEmptyVisitorCounters,
     getVisitorCountersWithoutInfants,
     countVisitors,
+    getProductAndOption,
 } from "./functions"
 export {
     AVAILABILITY_STATUSES,

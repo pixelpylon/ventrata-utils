@@ -1,3 +1,5 @@
+const {countBy} = require("lodash");
+
 function getUnitMapping (product) {
   return product.options[0].units.reduce((result, unit) => {
     return {...result, [unit.type]: unit.id};
@@ -15,7 +17,18 @@ function getUnitMapper (product) {
   }
 }
 
+function adaptUnits (bookingUnitItems, productUnits) {
+  const mapping = getUnitMapping(productUnits);
+  const counters = countBy(bookingUnitItems, (unitItem) => unitItem.unit.type)
+
+  return Object.entries(counters).reduce((result, [type, quantity]) => {
+    result.push({id: mapping[type], quantity})
+    return result
+  }, [])
+}
+
 module.exports = {
   getUnitMapping,
   getUnitMapper,
+  adaptUnits,
 };
