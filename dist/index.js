@@ -6,6 +6,7 @@ const formatVisitorCounters = require('./formatVisitorCounters');
 const getProductName = require('./getProductName');
 const getOptionName = require('./getOptionName');
 const getUnitName = require('./getUnitName');
+const getProductAndOption = require("./getProductAndOption");
 const {getUnitMapping, getUnitMapper, adaptUnits} = require('./unitMapping');
 const ApiClient = require('./ApiClient');
 const ApiError = require('./ApiError');
@@ -16,7 +17,7 @@ const {
   AVAILABILITY_STATUSES,
   DEFAULT_OPTION,
 } = require('./consts');
-const {getProductAndOption} = require("./getProductAndOption");
+
 
 module.exports = {
   getPhone,
