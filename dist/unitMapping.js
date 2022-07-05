@@ -18,7 +18,10 @@ function getUnitMapper (product) {
 }
 
 function adaptUnits (bookingUnitItems, productUnits) {
-  const mapping = getUnitMapping(productUnits);
+  const mapping = productUnits.reduce((result, unit) => {
+    return {...result, [unit.type]: unit.id};
+  }, {});
+
   const counters = countBy(bookingUnitItems, (unitItem) => unitItem.unit.type)
 
   return Object.entries(counters).reduce((result, [type, quantity]) => {
