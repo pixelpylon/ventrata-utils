@@ -48,7 +48,7 @@ export namespace Entities {
         title: string
         titlePlural: string
         subtitle: string
-        pricing: IPricing
+        pricingFrom: IPricing[]
     }
 
     export interface IProduct {
