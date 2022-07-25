@@ -126,7 +126,11 @@ class ApiClient {
         })
     }
 
-    createBooking({bookingUuid, productId, optionId, availabilityId, units, notes, answers}) {
+    createBooking({bookingUuid, productId, optionId, availabilityId, units, unitItems, notes, questionAnswers}) {
+        if (!units && !unitItems) {
+            throw new Error('Unit counters and unit items both are undefined')
+        }
+
         return this.axiosApiClient.post(`/bookings`,
             {
                 uuid: bookingUuid,
@@ -134,8 +138,8 @@ class ApiClient {
                 optionId,
                 availabilityId,
                 notes,
-                unitItems: deconvoluteUnits(units),
-                questionAnswers: answers,
+                unitItems: unitItems || deconvoluteUnits(units),
+                questionAnswers,
             }
         )
             .then(({data}) => data)
@@ -159,7 +163,20 @@ class ApiClient {
             .then(({data}) => data)
     }
 
-    updateBooking({bookingUuid, productId, optionId, availabilityId, units, notes}) {
+    updateBooking({bookingUuid, productId, optionId, availabilityId, units, unitItems, notes}) {
+        const gteUnitItems = () => {
+            if (unitItems) {
+                return unitItems
+            }
+
+            if (units) {
+                return deconvoluteUnits(units)
+            }
+
+            return undefined
+        }
+
+
         return this.axiosApiClient.patch(`/bookings/${bookingUuid}`,
             {
                 uuid: bookingUuid,
@@ -167,7 +184,7 @@ class ApiClient {
                 optionId,
                 availabilityId,
                 notes,
-                unitItems: units ? deconvoluteUnits(units) : undefined
+                unitItems: gteUnitItems(),
             }
         )
             .then(({data}) => data)

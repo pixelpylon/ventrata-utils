@@ -1,4 +1,4 @@
-import {Entities} from "./entities"
+import {Entities} from './entities'
 
 interface IGetCalendar {
     productId: string
@@ -41,14 +41,15 @@ interface IGetMonthAvailabilities {
     month: number
 }
 
-interface ICreateBooking {
+type ICreateBooking = {
     bookingUuid?: string
     productId: string
     optionId: string
     availabilityId: string
-    units: Entities.IUnitCounter[]
     notes?: string
-    answers?: Entities.IAnswer[]
+    questionAnswers?: Entities.IAnswer[]
+    units?: Entities.IUnitCounter[]
+    unitItems?: Entities.IUnitItemInput[]
 }
 
 interface IUpdateBooking {
@@ -57,6 +58,7 @@ interface IUpdateBooking {
     optionId?: string
     availabilityId?: string
     units?: Entities.IUnitCounter[]
+    unitItems?: Entities.IUnitItemInput[]
     notes?: string
 }
 
@@ -105,10 +107,8 @@ export declare class ApiClient {
     getMonthCalendar ({productId, optionId, units, month, year}: IGetMonthCalendar): Promise<Entities.ICalendarDay[]>
     getDateAvailabilities ({productId, optionId, units, month, year, date}: IGetDateAvailabilities): Promise<Entities.IAvailability[]>
     getMonthAvailabilities ({productId, optionId, units, month, year}: IGetMonthAvailabilities): Promise<Entities.IAvailability[]>
-    createBooking ({bookingUuid, productId, optionId, availabilityId, units, notes, answers}: ICreateBooking): Promise<Entities.IBooking>
+    createBooking ({bookingUuid, productId, optionId, availabilityId, units, unitItems, notes, questionAnswers}: ICreateBooking): Promise<Entities.IBooking>
     confirmBooking ({bookingUuid, emailAddress, fullName, phoneNumber, locales, country, resellerReference, cardPayment, notes}: IConfirmBooking): Promise<Entities.IBooking>
-    updateBooking ({bookingUuid, productId, optionId, availabilityId, units, notes}: IUpdateBooking): Promise<Entities.IBooking>
+    updateBooking ({bookingUuid, productId, optionId, availabilityId, units, unitItems, notes}: IUpdateBooking): Promise<Entities.IBooking>
     cancelBooking ({bookingUuid}: ICancelBooking): Promise<Entities.IBooking>
 }
-
-

@@ -94,6 +94,11 @@ export namespace Entities {
         quantity: number
     }
 
+    export interface IUnitItemInput {
+        unitId: string
+        answerQuestions?: IAnswer[]
+    }
+
     export interface ICalendarDay {
         available: boolean
         capacity: number
