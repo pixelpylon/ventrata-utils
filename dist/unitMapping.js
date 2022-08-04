@@ -25,7 +25,7 @@ function adaptUnits (bookingUnitItems, productUnits) {
   const counters = countBy(bookingUnitItems, (unitItem) => unitItem.unit.type)
 
   return Object.entries(counters).reduce((result, [type, quantity]) => {
-    result.push({id: mapping[type], quantity})
+    result.push({id: mapping[type], quantity, type})
     return result
   }, [])
 }

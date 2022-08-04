@@ -94,6 +94,10 @@ export namespace Entities {
         quantity: number
     }
 
+    export interface ITypedUnitCounter extends IUnitCounter {
+        type: string
+    }
+
     export interface IUnitItemInput {
         unitId: string
         answerQuestions?: IAnswer[]
