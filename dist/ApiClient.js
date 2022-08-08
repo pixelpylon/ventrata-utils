@@ -164,7 +164,7 @@ class ApiClient {
     }
 
     updateBooking({bookingUuid, productId, optionId, availabilityId, units, unitItems, notes}) {
-        const gteUnitItems = () => {
+        const getUnitItems = () => {
             if (unitItems) {
                 return unitItems
             }
@@ -176,7 +176,6 @@ class ApiClient {
             return undefined
         }
 
-
         return this.axiosApiClient.patch(`/bookings/${bookingUuid}`,
             {
                 uuid: bookingUuid,
@@ -184,7 +183,7 @@ class ApiClient {
                 optionId,
                 availabilityId,
                 notes,
-                unitItems: gteUnitItems(),
+                unitItems: getUnitItems(),
             }
         )
             .then(({data}) => data)
