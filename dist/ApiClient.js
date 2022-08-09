@@ -1,7 +1,7 @@
 const axios = require("axios")
 const axiosRetry = require('axios-retry')
 const moment = require("moment")
-const {times} = require("lodash")
+const {times, isArray} = require("lodash")
 const {AxiosApiClient} = require("common-utils")
 
 const DATE_FORMAT = 'YYYY-MM-DD'
@@ -15,10 +15,20 @@ const deconvoluteUnits = (units) => {
 }
 
 class ApiClient {
-    constructor(apiKey, url = undefined) {
+    constructor(apiKey, options) {
+        const {url, capabilities} = options || {}
+
+        const baseURL = url || 'https://api.ventrata.com/octo/'
+
+        const headers = {Authorization: `Bearer ${apiKey}`}
+
+        if (isArray(capabilities) && capabilities.length > 0) {
+            headers['Octo-Capabilities'] = capabilities.join(', ')
+        }
+
         const axiosInstance = axios.create({
-            baseURL: url || 'https://api.ventrata.com/octo/',
-            headers: {Authorization: `Bearer ${apiKey}`}
+            baseURL,
+            headers,
         })
 
         axiosRetry(axiosInstance, {
@@ -77,13 +87,14 @@ class ApiClient {
             .then(({data}) => data)
     }
 
-    getAvailabilities({productId, optionId, units, localDateStart, localDateEnd}) {
-        return this.axiosApiClient.post( `availability`, {
+    getAvailabilities({productId, optionId, units, localDateStart, localDateEnd, offerCode}) {
+        return this.axiosApiClient.post(`availability`, {
             productId,
             optionId,
             localDateStart,
             localDateEnd,
             units,
+            offerCode,
         })
             .then(({data}) => data)
     }
@@ -101,7 +112,7 @@ class ApiClient {
         })
     }
 
-    getMonthAvailabilities({productId, optionId, units, year, month}) {
+    getMonthAvailabilities({productId, optionId, units, year, month, offerCode}) {
         const startDate = moment({year, month, date: 1})
         const endDate = moment({year, month, date: startDate.daysInMonth()})
 
@@ -111,10 +122,11 @@ class ApiClient {
             localDateStart: startDate.format(DATE_FORMAT),
             localDateEnd: endDate.format(DATE_FORMAT),
             units,
+            offerCode,
         })
     }
 
-    getDateAvailabilities({productId, optionId, units, month, year, date}) {
+    getDateAvailabilities({productId, optionId, units, month, year, date, offerCode}) {
         const localDate = moment({year, month, date}).format(DATE_FORMAT)
 
         return this.getAvailabilities({
@@ -123,6 +135,7 @@ class ApiClient {
             localDateStart: localDate,
             localDateEnd: localDate,
             units,
+            offerCode,
         })
     }
 
@@ -163,7 +176,7 @@ class ApiClient {
             .then(({data}) => data)
     }
 
-    updateBooking({bookingUuid, productId, optionId, availabilityId, units, unitItems, notes}) {
+    updateBooking({bookingUuid, productId, optionId, availabilityId, units, unitItems, notes, offerCode}) {
         const getUnitItems = () => {
             if (unitItems) {
                 return unitItems
@@ -184,6 +197,7 @@ class ApiClient {
                 availabilityId,
                 notes,
                 unitItems: getUnitItems(),
+                offerCode,
             }
         )
             .then(({data}) => data)

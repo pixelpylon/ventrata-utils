@@ -22,6 +22,7 @@ interface IGetAvailabilities {
     units?: Entities.IUnitCounter[]
     localDateStart: string
     localDateEnd: string
+    offerCode?: string
 }
 
 interface IGetDateAvailabilities {
@@ -31,6 +32,7 @@ interface IGetDateAvailabilities {
     year: number
     month: number
     date: number
+    offerCode?: string
 }
 
 interface IGetMonthAvailabilities {
@@ -39,6 +41,7 @@ interface IGetMonthAvailabilities {
     units: Entities.IUnitCounter[]
     year: number
     month: number
+    offerCode?: string
 }
 
 type ICreateBooking = {
@@ -60,6 +63,7 @@ interface IUpdateBooking {
     units?: Entities.IUnitCounter[]
     unitItems?: Entities.IUnitItemInput[]
     notes?: string
+    offerCode?: string
 }
 
 interface ICancelBooking {
@@ -98,17 +102,17 @@ interface IGetBookings {
 }
 
 export declare class ApiClient {
-    constructor (apiKey: string, url?: string)
+    constructor (apiKey: string, options?: {url?: string, capabilities?: string[]})
     getProduct (productId: string): Promise<Entities.IProduct>
     getBooking (bookingUuid: string): Promise<Entities.IBooking>
     getBookings ({resellerReference, supplierReference, localDate, localDateStart, localDateEnd, productId, optionId}: IGetBookings): Promise<Entities.IBooking[]>
     getCalendar ({productId, optionId, units, localDateStart, localDateEnd}: IGetCalendar): Promise<Entities.ICalendarDay[]>
-    getAvailabilities ({productId, optionId, units, localDateStart, localDateEnd}: IGetAvailabilities): Promise<Entities.IAvailability[]>
+    getAvailabilities ({productId, optionId, units, localDateStart, localDateEnd, offerCode}: IGetAvailabilities): Promise<Entities.IAvailability[]>
     getMonthCalendar ({productId, optionId, units, month, year}: IGetMonthCalendar): Promise<Entities.ICalendarDay[]>
-    getDateAvailabilities ({productId, optionId, units, month, year, date}: IGetDateAvailabilities): Promise<Entities.IAvailability[]>
-    getMonthAvailabilities ({productId, optionId, units, month, year}: IGetMonthAvailabilities): Promise<Entities.IAvailability[]>
+    getDateAvailabilities ({productId, optionId, units, month, year, date, offerCode}: IGetDateAvailabilities): Promise<Entities.IAvailability[]>
+    getMonthAvailabilities ({productId, optionId, units, month, year, offerCode}: IGetMonthAvailabilities): Promise<Entities.IAvailability[]>
     createBooking ({bookingUuid, productId, optionId, availabilityId, units, unitItems, notes, questionAnswers}: ICreateBooking): Promise<Entities.IBooking>
     confirmBooking ({bookingUuid, emailAddress, fullName, phoneNumber, locales, country, resellerReference, cardPayment, notes}: IConfirmBooking): Promise<Entities.IBooking>
-    updateBooking ({bookingUuid, productId, optionId, availabilityId, units, unitItems, notes}: IUpdateBooking): Promise<Entities.IBooking>
+    updateBooking ({bookingUuid, productId, optionId, availabilityId, units, unitItems, notes, offerCode}: IUpdateBooking): Promise<Entities.IBooking>
     cancelBooking ({bookingUuid}: ICancelBooking): Promise<Entities.IBooking>
 }
