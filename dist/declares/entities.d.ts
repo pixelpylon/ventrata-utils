@@ -3,7 +3,13 @@ import {AVAILABILITY_STATUSES_UNION, BOOKING_STATUSES_UNION} from "./consts";
 export namespace Entities {
     export interface IPricing {
         original: number
+        retail: number
         currency: string
+    }
+
+    export interface IOffer {
+        code: string
+        title: string
     }
 
     export interface IAnswer {
@@ -79,6 +85,9 @@ export namespace Entities {
         reseller: IReseller | null
         notes: string
         utcUpdatedAt: string
+        utcExpiresAt: string
+        utcCreatedAt: string
+        offer: IOffer | null
     }
 
     export interface IAvailability {
