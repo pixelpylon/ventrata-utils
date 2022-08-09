@@ -139,7 +139,7 @@ class ApiClient {
         })
     }
 
-    createBooking({bookingUuid, productId, optionId, availabilityId, units, unitItems, notes, questionAnswers}) {
+    createBooking({bookingUuid, productId, optionId, availabilityId, units, unitItems, notes, questionAnswers, offerCode}) {
         if (!units && !unitItems) {
             throw new Error('Unit counters and unit items both are undefined')
         }
@@ -153,6 +153,7 @@ class ApiClient {
                 notes,
                 unitItems: unitItems || deconvoluteUnits(units),
                 questionAnswers,
+                offerCode,
             }
         )
             .then(({data}) => data)
