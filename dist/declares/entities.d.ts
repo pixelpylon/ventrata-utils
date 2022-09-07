@@ -92,6 +92,7 @@ export namespace Entities {
 
     export interface IAvailability {
         localDateTimeStart: string
+        utcCutoffAt: string
         available: boolean
         capacity: number
         status: AVAILABILITY_STATUSES_UNION
