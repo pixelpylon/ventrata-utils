@@ -18,6 +18,11 @@ const {
   DEFAULT_OPTION,
 } = require('./consts');
 
+const {
+  combinedUnitCountersValidator,
+  idUnitCountersValidator,
+  typeUnitCountersValidator,
+} = require('./validators');
 
 module.exports = {
   getPhone,
@@ -40,4 +45,8 @@ module.exports = {
   idifyUnitCounters,
   unitItemsToUnitCounters,
   getProductAndOption,
+
+  combinedUnitCountersValidator,
+  idUnitCountersValidator,
+  typeUnitCountersValidator,
 };

@@ -13,7 +13,8 @@ export {
     getVisitorCountersWithoutInfants,
     countVisitors,
     getProductAndOption,
-} from "./functions"
+} from "./utils"
+
 export {
     AVAILABILITY_STATUSES,
     BOOKING_STATUSES,
@@ -25,3 +26,9 @@ export {
     VISITOR_AGES_UNION,
     DEFAULT_OPTION,
 } from "./consts"
+
+export {
+    typeUnitCountersValidator,
+    idUnitCountersValidator,
+    combinedUnitCountersValidator,
+} from "./validators"
