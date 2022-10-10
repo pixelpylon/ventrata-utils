@@ -3,7 +3,7 @@ import {Entities} from './entities'
 interface IGetCalendar {
     productId: string
     optionId: string
-    units: Entities.IUnitCounter[]
+    units: Entities.IIdUnitCounter[]
     localDateStart: string
     localDateEnd: string
 }
@@ -11,7 +11,7 @@ interface IGetCalendar {
 interface IGetMonthCalendar {
     productId: string
     optionId: string
-    units: Entities.IUnitCounter[]
+    units: Entities.IIdUnitCounter[]
     year: number
     month: number
 }
@@ -19,7 +19,7 @@ interface IGetMonthCalendar {
 interface IGetAvailabilities {
     productId: string
     optionId: string
-    units?: Entities.IUnitCounter[]
+    units?: Entities.IIdUnitCounter[]
     localDateStart: string
     localDateEnd: string
     offerCode?: string
@@ -28,7 +28,7 @@ interface IGetAvailabilities {
 interface IGetDateAvailabilities {
     productId: string
     optionId: string
-    units?: Entities.IUnitCounter[]
+    units?: Entities.IIdUnitCounter[]
     year: number
     month: number
     date: number
@@ -38,7 +38,7 @@ interface IGetDateAvailabilities {
 interface IGetMonthAvailabilities {
     productId: string
     optionId: string
-    units: Entities.IUnitCounter[]
+    units: Entities.IIdUnitCounter[]
     year: number
     month: number
     offerCode?: string
@@ -51,7 +51,7 @@ type ICreateBooking = {
     availabilityId: string
     notes?: string
     questionAnswers?: Entities.IAnswer[]
-    units?: Entities.IUnitCounter[]
+    units?: Entities.IIdUnitCounter[]
     unitItems?: Entities.IUnitItemInput[]
     offerCode?: string
 }
@@ -61,7 +61,7 @@ interface IUpdateBooking {
     productId?: string
     optionId?: string
     availabilityId?: string
-    units?: Entities.IUnitCounter[]
+    units?: Entities.IIdUnitCounter[]
     unitItems?: Entities.IUnitItemInput[]
     notes?: string
     offerCode?: string

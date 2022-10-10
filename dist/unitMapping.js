@@ -1,37 +1,59 @@
-const {countBy} = require("lodash");
+const {countBy} = require("lodash")
 
-function getUnitMapping (product) {
-  return product.options[0].units.reduce((result, unit) => {
-    return {...result, [unit.type]: unit.id};
-  }, {});
+function getUnitMapping (optionUnits) {
+  return optionUnits.reduce((result, unit) => {
+    return {...result, [unit.type]: unit.id}
+  }, {})
 }
 
-function getUnitMapper (product) {
-  const unitMapping = getUnitMapping(product);
-  return function (unitType) {
-    const unitId = unitMapping[unitType];
-    if (!unitId) {
-      throw new Error(`Unknown unit type`);
+function getUnitMapper (optionUnits) {
+  const unitMapping = getUnitMapping(optionUnits)
+
+  return function (type) {
+    const id = unitMapping[type]
+    if (!id) {
+      throw new Error(`Unknown unit type '${type}'`)
     }
-    return unitId;
+    return id
   }
 }
 
-function adaptUnits (bookingUnitItems, productUnits) {
-  const mapping = productUnits.reduce((result, unit) => {
-    return {...result, [unit.type]: unit.id};
-  }, {});
+function idifyUnitCounters(typeUnitCounters, unitMapping) {
+  return typeUnitCounters.reduce((result, unitCounter) => {
+    const {type, quantity} = unitCounter
+    const id = unitMapping[type]
 
-  const counters = countBy(bookingUnitItems, (unitItem) => unitItem.unit.type)
+    if (!id) {
+      throw new Error(`Unknown unit type '${type}'`)
+    }
 
-  return Object.entries(counters).reduce((result, [type, quantity]) => {
-    result.push({id: mapping[type], quantity, type})
+    result.push({id, quantity, type})
     return result
+  }, [])
+}
+
+function unitItemsToUnitCounters (unitItems) {
+  return unitItems.reduce((counters, unitItem) => {
+    const counter = counters.find((counter) => counter.type === unitItem.type)
+
+    if (counter) {
+      counter.quantity++
+    }
+    else {
+      counters.push({
+        id: unitItem.id,
+        type: unitItem.type,
+        quantity: 1,
+      })
+    }
+
+    return counters
   }, [])
 }
 
 module.exports = {
   getUnitMapping,
   getUnitMapper,
-  adaptUnits,
+  unitItemsToUnitCounters,
+  idifyUnitCounters,
 };

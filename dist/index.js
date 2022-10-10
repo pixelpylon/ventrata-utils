@@ -7,7 +7,7 @@ const getProductName = require('./getProductName');
 const getOptionName = require('./getOptionName');
 const getUnitName = require('./getUnitName');
 const getProductAndOption = require("./getProductAndOption");
-const {getUnitMapping, getUnitMapper, adaptUnits} = require('./unitMapping');
+const {getUnitMapping, getUnitMapper, unitItemsToUnitCounters, idifyUnitCounters} = require('./unitMapping');
 const ApiClient = require('./ApiClient');
 const ApiError = require('./ApiError');
 const {
@@ -37,6 +37,7 @@ module.exports = {
   getUnitName,
   getUnitMapping,
   getUnitMapper,
-  adaptUnits,
+  idifyUnitCounters,
+  unitItemsToUnitCounters,
   getProductAndOption,
 };

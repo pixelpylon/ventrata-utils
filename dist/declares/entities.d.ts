@@ -1,4 +1,4 @@
-import {AVAILABILITY_STATUSES_UNION, BOOKING_STATUSES_UNION} from "./consts";
+import {AVAILABILITY_STATUSES_UNION, BOOKING_STATUSES_UNION, UNIT_TYPES_UNION} from './consts'
 
 export namespace Entities {
     export interface IPricing {
@@ -47,7 +47,7 @@ export namespace Entities {
     }
 
     export interface IUnit {
-        type: string
+        type: UNIT_TYPES_UNION
         id: string
         internalName: string
         reference: string
@@ -102,12 +102,26 @@ export namespace Entities {
         id: string
     }
 
-    export interface IUnitCounter {
+    export interface IIdUnitCounter {
         id: string
         quantity: number
     }
 
-    export interface ITypedUnitCounter extends IUnitCounter {
+    export interface ITypeUnitCounter {
+        type: UNIT_TYPES_UNION
+        quantity: number
+    }
+
+    export interface ICombinedUnitCounter {
+        id: string
+        type: UNIT_TYPES_UNION
+        quantity: number
+    }
+
+    /**
+     * @deprecated The method should not be used
+     */
+    export interface ITypedUnitCounter extends IIdUnitCounter {
         type: string
     }
 
