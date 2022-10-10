@@ -1,6 +1,6 @@
-import {validate} from 'common-utils'
+import {Validator} from 'common-utils'
 
-export const typeUnitCountersValidator: validate.Validator
-export const idUnitCountersValidator: validate.Validator
-export const combinedUnitCountersValidator: validate.Validator
+export declare const typeUnitCountersValidator: Validator
+export declare const idUnitCountersValidator: Validator
+export declare const combinedUnitCountersValidator: Validator
 
