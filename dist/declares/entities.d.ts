@@ -34,8 +34,9 @@ export namespace Entities {
 
     export interface IOption {
         id: string
+        default: boolean
         internalName: string
-        reference: string
+        reference: string | null
         title: string
         units: IUnit[]
     }
@@ -63,6 +64,8 @@ export namespace Entities {
         internalName: string
         reference: string
         options: IOption[]
+        locale: string
+        timeZone: string
     }
 
     export interface IReseller {
