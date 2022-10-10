@@ -39,6 +39,11 @@ class ApiClient {
         this.axiosApiClient = AxiosApiClient(axiosInstance)
     }
 
+    getProducts() {
+        return this.axiosApiClient.get(`products`)
+            .then(({data}) => data)
+    }
+
     getProduct(productId) {
         return this.axiosApiClient.get(`products/${productId}`)
             .then(({data}) => data)
