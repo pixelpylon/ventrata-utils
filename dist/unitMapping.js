@@ -34,15 +34,15 @@ function idifyUnitCounters(typeUnitCounters, unitMapping) {
 
 function unitItemsToUnitCounters (unitItems) {
   return unitItems.reduce((counters, unitItem) => {
-    const counter = counters.find((counter) => counter.type === unitItem.type)
+    const counter = counters.find((counter) => counter.type === unitItem.unit.type)
 
     if (counter) {
       counter.quantity++
     }
     else {
       counters.push({
-        id: unitItem.id,
-        type: unitItem.type,
+        id: unitItem.unit.id,
+        type: unitItem.unit.type,
         quantity: 1,
       })
     }
