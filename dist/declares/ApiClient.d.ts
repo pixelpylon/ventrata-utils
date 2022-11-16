@@ -1,4 +1,4 @@
-import {Entities} from './entities'
+import * as Entities from './entities'
 
 interface IGetCalendar {
     productId: string
@@ -71,8 +71,21 @@ interface ICancelBooking {
     bookingUuid: string
 }
 
-interface ICardPayment {
-    gateway: string
+type CardPaymentExternalPayload = {
+    gateway: 'stripe' | 'external'
+    stripe: {paymentIntent: string}
+}
+
+type CardPaymentStripePayload = {
+    gateway: 'stripe' | 'external'
+    stripe: {paymentIntent: string}
+}
+
+type CardPaymentPayload =
+  | CardPaymentStripePayload
+  | CardPaymentExternalPayload
+
+type CardPayment = CardPaymentPayload & {
     amount: number
     currency: string
     notes?: string
@@ -87,7 +100,7 @@ interface IConfirmBooking {
     country: string
     notes?: string
     resellerReference?: string
-    cardPayment?: ICardPayment
+    cardPayment?: CardPayment
 }
 
 interface IGetBookings {

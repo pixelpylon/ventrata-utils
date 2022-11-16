@@ -1,4 +1,4 @@
-import {Entities} from './entities'
+import * as Entities from './entities'
 import {UNIT_TYPES_UNION, VISITOR_AGES_UNION} from "./consts";
 import {ApiClient} from "./ApiClient";
 

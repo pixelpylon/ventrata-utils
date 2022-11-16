@@ -1,4 +1,4 @@
-export {Entities} from "./entities"
+export * as Entities from "./entities"
 export {ApiClient} from "./ApiClient"
 export {
     getProductName,
