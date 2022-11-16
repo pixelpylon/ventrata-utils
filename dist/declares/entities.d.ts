@@ -1,28 +1,28 @@
 import {AVAILABILITY_STATUSES_UNION, BOOKING_STATUSES_UNION, UNIT_TYPES_UNION} from './consts'
 import {Currency} from 'common-utils'
 
-export interface IPricing {
+export type Pricing = {
     original: number
     retail: number
     currency: string
 }
 
-export interface IOffer {
+export type Offer = {
     code: string
     title: string
 }
 
-export interface IAnswer {
+export type Answer = {
     questionId: string
     value: string
 }
 
-export interface IUnitItem {
+export type UnitItem = {
     unitId: string
-    unit: IUnit
+    unit: Unit
 }
 
-export interface IContact {
+export type Contact = {
     fullName: string
     firstName: string
     lastName: string
@@ -32,69 +32,69 @@ export interface IContact {
     country: string
 }
 
-export interface IOption {
+export type Option = {
     id: string
     default: boolean
     internalName: string
     reference: string | null
     title: string
-    units: IUnit[]
+    units: Unit[]
 }
 
-export interface IRestriction {
+export type Restriction = {
     minAge: number
     maxAge: number
 }
 
-export interface IUnit {
+export type Unit = {
     type: UNIT_TYPES_UNION
     id: string
     internalName: string
     reference: string
-    restrictions: IRestriction
+    restrictions: Restriction
     title: string
     titlePlural: string
     subtitle: string
-    pricingFrom: IPricing[]
+    pricingFrom: Pricing[]
 }
 
-export interface IProduct {
+export type Product = {
     id: string
     title: string
     internalName: string
     reference: string
-    options: IOption[]
+    options: Option[]
     locale: string
     timeZone: string
 }
 
-export interface IReseller {
+export type Reseller = {
     name: string
     id: string
 }
 
-export interface IBooking {
+export type Booking = {
     supplierReference: string
     resellerReference?: string
     uuid: string
     availabilityId: string
     status: BOOKING_STATUSES_UNION
-    contact: IContact
-    product: IProduct
-    option: IOption,
-    unitItems: IUnitItem[]
-    pricing: IPricing
-    availability: IAvailability
-    reseller: IReseller | null
+    contact: Contact
+    product: Product
+    option: Option,
+    unitItems: UnitItem[]
+    pricing: Pricing
+    availability: Availability
+    reseller: Reseller | null
     notes: string
     utcUpdatedAt: string
     utcExpiresAt: string
     utcCreatedAt: string
-    offer: IOffer | null
+    offer: Offer | null
     cardPayment?: CardPayment
 }
 
-export interface IAvailability {
+export type Availability = {
     localDateTimeStart: string
     utcCutoffAt: string
     available: boolean
@@ -103,43 +103,28 @@ export interface IAvailability {
     id: string
 }
 
-export interface IIdUnitCounter {
+export type IdUnitCounter = {
     id: string
     quantity: number
 }
 
-export interface ITypeUnitCounter {
+export type TypeUnitCounter = {
     type: UNIT_TYPES_UNION
     quantity: number
 }
 
-export interface ICombinedUnitCounter {
+export type CombinedUnitCounter = {
     id: string
     type: UNIT_TYPES_UNION
     quantity: number
 }
 
-/**
- * @deprecated The method should not be used
- */
-export interface ITypedUnitCounter extends IIdUnitCounter {
-    type: string
-}
-
-export interface IUnitItemInput {
+export type UnitItemInput = {
     unitId: string
-    answerQuestions?: IAnswer[]
+    answerQuestions?: Answer[]
 }
 
-export interface ICalendarDay {
-    available: boolean
-    capacity: number
-    localDate: string
-    status: AVAILABILITY_STATUSES_UNION
-    vacancies: number
-}
-
-export interface ICalendarDay {
+export type CalendarDay = {
     available: boolean
     capacity: number
     localDate: string

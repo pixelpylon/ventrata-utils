@@ -1,73 +1,73 @@
 import * as Entities from './entities'
 
-interface IGetCalendar {
+type GetCalendar = {
     productId: string
     optionId: string
-    units: Entities.IIdUnitCounter[]
+    units: Entities.IdUnitCounter[]
     localDateStart: string
     localDateEnd: string
 }
 
-interface IGetMonthCalendar {
+type GetMonthCalendar = {
     productId: string
     optionId: string
-    units: Entities.IIdUnitCounter[]
+    units: Entities.IdUnitCounter[]
     year: number
     month: number
 }
 
-interface IGetAvailabilities {
+type GetAvailabilities = {
     productId: string
     optionId: string
-    units?: Entities.IIdUnitCounter[]
+    units?: Entities.IdUnitCounter[]
     localDateStart: string
     localDateEnd: string
     offerCode?: string
 }
 
-interface IGetDateAvailabilities {
+type GetDateAvailabilities = {
     productId: string
     optionId: string
-    units?: Entities.IIdUnitCounter[]
+    units?: Entities.IdUnitCounter[]
     year: number
     month: number
     date: number
     offerCode?: string
 }
 
-interface IGetMonthAvailabilities {
+type GetMonthAvailabilities = {
     productId: string
     optionId: string
-    units: Entities.IIdUnitCounter[]
+    units: Entities.IdUnitCounter[]
     year: number
     month: number
     offerCode?: string
 }
 
-type ICreateBooking = {
+type CreateBooking = {
     bookingUuid?: string
     productId: string
     optionId: string
     availabilityId: string
     notes?: string
-    questionAnswers?: Entities.IAnswer[]
-    units?: Entities.IIdUnitCounter[]
-    unitItems?: Entities.IUnitItemInput[]
+    questionAnswers?: Entities.Answer[]
+    units?: Entities.IdUnitCounter[]
+    unitItems?: Entities.UnitItemInput[]
     offerCode?: string
 }
 
-interface IUpdateBooking {
+type UpdateBooking = {
     bookingUuid: string
     productId?: string
     optionId?: string
     availabilityId?: string
-    units?: Entities.IIdUnitCounter[]
-    unitItems?: Entities.IUnitItemInput[]
+    units?: Entities.IdUnitCounter[]
+    unitItems?: Entities.UnitItemInput[]
     notes?: string
     offerCode?: string
 }
 
-interface ICancelBooking {
+type CancelBooking = {
     bookingUuid: string
 }
 
@@ -91,7 +91,7 @@ type CardPayment = CardPaymentPayload & {
     notes?: string
 }
 
-interface IConfirmBooking {
+type ConfirmBooking = {
     bookingUuid: string
     fullName: string
     emailAddress: string
@@ -103,7 +103,7 @@ interface IConfirmBooking {
     cardPayment?: CardPayment
 }
 
-interface IGetBookings {
+type GetBookings = {
     resellerReference?: string
     supplierReference?: string
     localDate?: string
@@ -117,17 +117,17 @@ interface IGetBookings {
 
 export declare class ApiClient {
     constructor (apiKey: string, options?: {url?: string, capabilities?: string[]})
-    getProducts (): Promise<Entities.IProduct[]>
-    getProduct (productId: string): Promise<Entities.IProduct>
-    getBooking (bookingUuid: string): Promise<Entities.IBooking>
-    getBookings ({resellerReference, supplierReference, localDate, localDateStart, localDateEnd, productId, optionId}: IGetBookings): Promise<Entities.IBooking[]>
-    getCalendar ({productId, optionId, units, localDateStart, localDateEnd}: IGetCalendar): Promise<Entities.ICalendarDay[]>
-    getAvailabilities ({productId, optionId, units, localDateStart, localDateEnd, offerCode}: IGetAvailabilities): Promise<Entities.IAvailability[]>
-    getMonthCalendar ({productId, optionId, units, month, year}: IGetMonthCalendar): Promise<Entities.ICalendarDay[]>
-    getDateAvailabilities ({productId, optionId, units, month, year, date, offerCode}: IGetDateAvailabilities): Promise<Entities.IAvailability[]>
-    getMonthAvailabilities ({productId, optionId, units, month, year, offerCode}: IGetMonthAvailabilities): Promise<Entities.IAvailability[]>
-    createBooking ({bookingUuid, productId, optionId, availabilityId, units, unitItems, notes, questionAnswers, offerCode}: ICreateBooking): Promise<Entities.IBooking>
-    confirmBooking ({bookingUuid, emailAddress, fullName, phoneNumber, locales, country, resellerReference, cardPayment, notes}: IConfirmBooking): Promise<Entities.IBooking>
-    updateBooking ({bookingUuid, productId, optionId, availabilityId, units, unitItems, notes, offerCode}: IUpdateBooking): Promise<Entities.IBooking>
-    cancelBooking ({bookingUuid}: ICancelBooking): Promise<Entities.IBooking>
+    getProducts (): Promise<Entities.Product[]>
+    getProduct (productId: string): Promise<Entities.Product>
+    getBooking (bookingUuid: string): Promise<Entities.Booking>
+    getBookings ({resellerReference, supplierReference, localDate, localDateStart, localDateEnd, productId, optionId}: GetBookings): Promise<Entities.Booking[]>
+    getCalendar ({productId, optionId, units, localDateStart, localDateEnd}: GetCalendar): Promise<Entities.CalendarDay[]>
+    getAvailabilities ({productId, optionId, units, localDateStart, localDateEnd, offerCode}: GetAvailabilities): Promise<Entities.Availability[]>
+    getMonthCalendar ({productId, optionId, units, month, year}: GetMonthCalendar): Promise<Entities.CalendarDay[]>
+    getDateAvailabilities ({productId, optionId, units, month, year, date, offerCode}: GetDateAvailabilities): Promise<Entities.Availability[]>
+    getMonthAvailabilities ({productId, optionId, units, month, year, offerCode}: GetMonthAvailabilities): Promise<Entities.Availability[]>
+    createBooking ({bookingUuid, productId, optionId, availabilityId, units, unitItems, notes, questionAnswers, offerCode}: CreateBooking): Promise<Entities.Booking>
+    confirmBooking ({bookingUuid, emailAddress, fullName, phoneNumber, locales, country, resellerReference, cardPayment, notes}: ConfirmBooking): Promise<Entities.Booking>
+    updateBooking ({bookingUuid, productId, optionId, availabilityId, units, unitItems, notes, offerCode}: UpdateBooking): Promise<Entities.Booking>
+    cancelBooking ({bookingUuid}: CancelBooking): Promise<Entities.Booking>
 }
