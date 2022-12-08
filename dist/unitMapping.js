@@ -1,12 +1,12 @@
-const {countBy} = require("lodash")
+const {countBy} = require('lodash')
 
-function getUnitMapping (optionUnits) {
+function getUnitMapping(optionUnits) {
   return optionUnits.reduce((result, unit) => {
     return {...result, [unit.type]: unit.id}
   }, {})
 }
 
-function getUnitMapper (optionUnits) {
+function getUnitMapper(optionUnits) {
   const unitMapping = getUnitMapping(optionUnits)
 
   return function (type) {
@@ -32,14 +32,13 @@ function idifyUnitCounters(typeUnitCounters, unitMapping) {
   }, [])
 }
 
-function unitItemsToUnitCounters (unitItems) {
+function unitItemsToUnitCounters(unitItems) {
   return unitItems.reduce((counters, unitItem) => {
     const counter = counters.find((counter) => counter.type === unitItem.unit.type)
 
     if (counter) {
       counter.quantity++
-    }
-    else {
+    } else {
       counters.push({
         id: unitItem.unit.id,
         type: unitItem.unit.type,
@@ -56,4 +55,4 @@ module.exports = {
   getUnitMapper,
   unitItemsToUnitCounters,
   idifyUnitCounters,
-};
+}

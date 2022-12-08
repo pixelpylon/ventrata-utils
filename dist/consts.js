@@ -2,7 +2,7 @@ const VISITOR_AGES = {
   ADULTS: 'adults',
   CHILDREN: 'children',
   INFANTS: 'infants',
-  UNKNOWN: 'unknown'
+  UNKNOWN: 'unknown',
 }
 
 const EMPTY_VISITOR_COUNTERS = {
@@ -10,7 +10,7 @@ const EMPTY_VISITOR_COUNTERS = {
   [VISITOR_AGES.CHILDREN]: 0,
   [VISITOR_AGES.INFANTS]: 0,
   [VISITOR_AGES.UNKNOWN]: 0,
-};
+}
 
 const BOOKING_STATUSES = {
   CANCELLED: 'CANCELLED',
@@ -18,7 +18,7 @@ const BOOKING_STATUSES = {
   REDEEMED: 'REDEEMED',
   ON_HOLD: 'ON_HOLD',
   EXPIRED: 'EXPIRED',
-};
+}
 
 const AVAILABILITY_STATUSES = {
   AVAILABLE: 'AVAILABLE',
@@ -26,13 +26,13 @@ const AVAILABILITY_STATUSES = {
   SOLD_OUT: 'SOLD_OUT',
   FREESALE: 'FREESALE',
   LIMITED: 'LIMITED',
-};
+}
 
 const UNIT_TYPES = {
   ADULT: 'ADULT',
   CHILD: 'CHILD',
   INFANT: 'INFANT',
-};
+}
 
 const DEFAULT_OPTION = 'DEFAULT'
 
@@ -43,4 +43,4 @@ module.exports = {
   AVAILABILITY_STATUSES,
   UNIT_TYPES,
   DEFAULT_OPTION,
-};
+}

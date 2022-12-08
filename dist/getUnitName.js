@@ -1,6 +1,6 @@
-const getEntityName = require("./getEntityName");
+const getEntityName = require('./getEntityName')
 
-function getUnitName (unit) {
+function getUnitName(unit) {
   return getEntityName(unit)
 }
 

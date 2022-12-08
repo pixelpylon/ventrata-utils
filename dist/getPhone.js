@@ -1,15 +1,15 @@
-const {parsePhone} = require("common-utils");
+const {parsePhone} = require('common-utils')
 
 const getPhone = (contact) => {
   if (contact.phoneNumber) {
-    return contact.phoneNumber;
+    return contact.phoneNumber
   }
 
   if (!contact.notes) {
-    return null;
+    return null
   }
 
-  return parsePhone(contact.notes);
-};
+  return parsePhone(contact.notes)
+}
 
-module.exports = getPhone;
+module.exports = getPhone

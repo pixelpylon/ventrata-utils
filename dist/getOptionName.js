@@ -1,6 +1,6 @@
-const getEntityName = require("./getEntityName");
+const getEntityName = require('./getEntityName')
 
-function getOptionName (option) {
+function getOptionName(option) {
   return getEntityName(option)
 }
 

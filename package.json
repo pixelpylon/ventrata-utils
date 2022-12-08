@@ -6,7 +6,12 @@
   "typings": "dist/declares/main.d.ts",
   "scripts": {
     "test": "mocha 'test/**/*.test.js'",
-    "test:dev": "mocha 'test/**/*.test.js' --watch"
+    "test:dev": "mocha 'test/**/*.test.js' --watch",
+    "prepare": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pixelpylon/ventrata-utils.git"
   },
   "engines": {
     "node": ">=12"
@@ -21,7 +26,14 @@
     "moment": "^2.29.1"
   },
   "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^4.0.0",
     "chai": "^4.3.6",
-    "mocha": "^10.0.0"
+    "mocha": "^10.0.0",
+    "prettier": "2.8.0",
+    "lint-staged": "^13.1.0",
+    "husky": "^8.0.0"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
   }
 }

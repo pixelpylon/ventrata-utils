@@ -1,4 +1,4 @@
-function getEntityName (entity) {
+function getEntityName(entity) {
   if (entity.title) {
     return entity.title
   }

@@ -1,6 +1,6 @@
-const getEntityName = require("./getEntityName");
+const getEntityName = require('./getEntityName')
 
-function getProductName (product) {
+function getProductName(product) {
   return getEntityName(product)
 }
 
