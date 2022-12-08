@@ -13,6 +13,8 @@ export {
     getVisitorCountersWithoutInfants,
     countVisitors,
     getProductAndOption,
+  mergeUnitItemsWithTravelers,
+  deconvoluteUnitCounters,
 } from "./utils"
 
 export {

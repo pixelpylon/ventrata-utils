@@ -16,3 +16,5 @@ export function countVisitors (booking: Entities.Booking): {[key in VISITOR_AGES
 export function getVisitorCountersWithoutInfants (booking: Entities.Booking): {[key in VISITOR_AGES_UNION]: number}
 export function formatVisitorCounters (counters: {[key in VISITOR_AGES_UNION]: number}): string
 export function getProductAndOption (ventrata: ApiClient, productId: string, optionId: string): Promise<{product: Entities.Product, option: Entities.Option}>
+export function deconvoluteUnitCounters (unitCounters: Entities.IdUnitCounter[]): Entities.UnitItemId[]
+export function mergeUnitItemsWithTravelers (unitItems: Entities.UnitItemId[], travelers: Entities.Traveler[], travelersInfoQuestionId: string): Entities.UnitItemInput[]

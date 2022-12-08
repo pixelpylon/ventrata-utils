@@ -17,6 +17,15 @@ export type Answer = {
     value: string
 }
 
+export type UnitItemId = {
+    unitId: string
+}
+
+export type UnitItemInput = {
+    unitId: string
+    answerQuestions?: Answer[]
+}
+
 export type UnitItem = {
     unitId: string
     unit: Unit
@@ -119,11 +128,6 @@ export type CombinedUnitCounter = {
     quantity: number
 }
 
-export type UnitItemInput = {
-    unitId: string
-    answerQuestions?: Answer[]
-}
-
 export type CalendarDay = {
     available: boolean
     capacity: number
@@ -159,3 +163,9 @@ export type StripeCardPayment = {
 }
 
 export type CardPayment = StripeCardPayment
+
+export type Traveler = {
+    firstName: string
+    lastName: string
+    age: number
+}

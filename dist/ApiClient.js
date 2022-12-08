@@ -1,18 +1,11 @@
 const axios = require("axios")
 const axiosRetry = require('axios-retry')
 const moment = require("moment")
-const {times, isArray} = require("lodash")
+const {isArray} = require("lodash")
 const {AxiosApiClient} = require("common-utils")
+const deconvoluteUnitCounters = require("./deconvoluteUnitCounters");
 
 const DATE_FORMAT = 'YYYY-MM-DD'
-
-const deconvoluteUnits = (units) => {
-    return units.reduce((result, unitCounter) => {
-        const unitItems = times(unitCounter.quantity, () => ({unitId: unitCounter.id}))
-        result.push(...unitItems)
-        return result
-    }, [])
-}
 
 class ApiClient {
     constructor(apiKey, options) {
@@ -156,7 +149,7 @@ class ApiClient {
                 optionId,
                 availabilityId,
                 notes,
-                unitItems: unitItems || deconvoluteUnits(units),
+                unitItems: unitItems || deconvoluteUnitCounters(units),
                 questionAnswers,
                 offerCode, // Possibly this doesn't work
             }
@@ -189,7 +182,7 @@ class ApiClient {
             }
 
             if (units) {
-                return deconvoluteUnits(units)
+                return deconvoluteUnitCounters(units)
             }
 
             return undefined

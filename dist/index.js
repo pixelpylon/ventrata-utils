@@ -7,6 +7,8 @@ const getProductName = require('./getProductName');
 const getOptionName = require('./getOptionName');
 const getUnitName = require('./getUnitName');
 const getProductAndOption = require("./getProductAndOption");
+const deconvoluteUnitCounters = require('./deconvoluteUnitCounters')
+const mergeUnitItemsWithTravelers = require('./mergeUnitItemsWithTravelers')
 const {getUnitMapping, getUnitMapper, unitItemsToUnitCounters, idifyUnitCounters} = require('./unitMapping');
 const ApiClient = require('./ApiClient');
 const ApiError = require('./ApiError');
@@ -45,6 +47,8 @@ module.exports = {
   idifyUnitCounters,
   unitItemsToUnitCounters,
   getProductAndOption,
+  deconvoluteUnitCounters,
+  mergeUnitItemsWithTravelers,
 
   combinedUnitCountersValidator,
   idUnitCountersValidator,
