@@ -72,12 +72,11 @@ type CancelBooking = {
 }
 
 type CardPaymentExternalPayload = {
-  gateway: 'stripe' | 'external'
-  stripe: {paymentIntent: string}
+  gateway: 'external'
 }
 
 type CardPaymentStripePayload = {
-  gateway: 'stripe' | 'external'
+  gateway: 'stripe'
   stripe: {paymentIntent: string}
 }
 
