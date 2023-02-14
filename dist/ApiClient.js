@@ -9,7 +9,7 @@ const DATE_FORMAT = 'YYYY-MM-DD'
 
 class ApiClient {
   constructor(apiKey, options) {
-    const {url, capabilities} = options || {}
+    const {url, capabilities, debug} = options || {}
 
     const baseURL = url || 'https://api.ventrata.com/octo/'
 
@@ -23,6 +23,20 @@ class ApiClient {
       baseURL,
       headers,
     })
+
+    if (debug) {
+      axiosInstance.interceptors.response.use((response) => {
+        const config = response.config
+        console.log(
+          `REQUEST ${config.method} ${config.url}:
+${config.data}
+RESPONSE:
+${JSON.stringify(response.data)}
+`
+        )
+        return response
+      })
+    }
 
     axiosRetry(axiosInstance, {
       retries: 3,
@@ -138,6 +152,7 @@ class ApiClient {
   }
 
   createBooking({
+    orderId,
     bookingUuid,
     productId,
     optionId,
@@ -154,6 +169,7 @@ class ApiClient {
 
     return this.axiosApiClient
       .post(`/bookings`, {
+        orderId,
         uuid: bookingUuid,
         productId,
         optionId,
@@ -166,26 +182,10 @@ class ApiClient {
       .then(({data}) => data)
   }
 
-  confirmBooking({
-    bookingUuid,
-    emailAddress,
-    fullName,
-    phoneNumber,
-    locales,
-    country,
-    resellerReference,
-    cardPayment,
-    notes,
-  }) {
+  confirmBooking({bookingUuid, contact, resellerReference, cardPayment, notes}) {
     return this.axiosApiClient
       .post(`/bookings/${bookingUuid}/confirm`, {
-        contact: {
-          fullName,
-          emailAddress,
-          phoneNumber,
-          locales,
-          country,
-        },
+        contact,
         resellerReference,
         cardPayment,
         notes,
@@ -219,8 +219,43 @@ class ApiClient {
       .then(({data}) => data)
   }
 
-  cancelBooking({bookingUuid}) {
+  cancelBooking(bookingUuid) {
     return this.axiosApiClient.delete(`/bookings/${bookingUuid}`).then(({data}) => data)
+  }
+
+  createOrder({currency, expirationMinutes}) {
+    return this.axiosApiClient
+      .post('/orders', {
+        currency,
+        expirationMinutes,
+      })
+      .then(({data}) => data)
+  }
+
+  getOrder(orderId) {
+    return this.axiosApiClient.get('/orders/' + orderId).then(({data}) => data)
+  }
+
+  extendOrder({orderId, expirationMinutes}) {
+    return this.axiosApiClient
+      .post('/orders/' + orderId + '/extend', {
+        expirationMinutes,
+      })
+      .then(({data}) => data)
+  }
+
+  confirmOrder({orderId, contact, cardPayment, notes}) {
+    return this.axiosApiClient
+      .post(`/orders/${orderId}/confirm`, {
+        contact,
+        cardPayment,
+        notes,
+      })
+      .then(({data}) => data)
+  }
+
+  cancelOrder(orderId) {
+    return this.axiosApiClient.delete(`/orders/${orderId}`).then(({data}) => data)
   }
 }
 

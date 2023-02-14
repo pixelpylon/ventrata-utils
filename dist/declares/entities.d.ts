@@ -1,9 +1,10 @@
-import {Currency} from 'common-utils'
-import {AVAILABILITY_STATUSES_UNION, BOOKING_STATUSES_UNION, UNIT_TYPES_UNION} from './consts'
+import {AVAILABILITY_STATUSES_UNION, BOOKING_STATUSES_UNION, ORDER_STATUSES_UNION, UNIT_TYPES_UNION} from './consts'
 
 export type Pricing = {
   original: number
   retail: number
+  net: number
+  currencyPrecision: number
   currency: string
 }
 
@@ -92,7 +93,7 @@ export type Booking = {
   product: Product
   option: Option
   unitItems: UnitItem[]
-  pricing: Pricing
+  pricing?: Pricing
   availability: Availability
   reseller: Reseller | null
   notes: string
@@ -101,6 +102,8 @@ export type Booking = {
   utcCreatedAt: string
   offer: Offer | null
   cardPayment?: CardPayment
+  orderId?: string
+  primary?: boolean
 }
 
 export type Availability = {
@@ -141,17 +144,20 @@ export type StripePaymentIntent = {
   publishableKey: string
   clientSecret: string
   amount: number
-  currency: Currency
+  currency: string
 }
 
 export type StripeSetupIntent = {
   id: string
   publishableKey: string
   clientSecret: string
-  currency: Currency
+  currency: string
 }
 
-export type StripeCardPaymentPayload = {paymentIntent: StripePaymentIntent} | {setupIntent: StripeSetupIntent}
+export type StripeCardPaymentPayload =
+  | {paymentIntent: StripePaymentIntent}
+  | {setupIntent: StripeSetupIntent}
+  | {paymentIntent: StripePaymentIntent; setupIntent: StripeSetupIntent}
 
 export type StripeCardPayment = {
   gateway: 'stripe'
@@ -166,4 +172,15 @@ export type Traveler = {
   firstName: string
   lastName: string
   age: number
+}
+
+export type Order = {
+  id: string
+  status: ORDER_STATUSES_UNION
+  utcExpiresAt: string
+  utcConfirmedAt: string
+  bookings: Booking[]
+  contact: Contact
+  cardPayment?: CardPayment
+  pricing?: Pricing
 }
