@@ -76,6 +76,7 @@ export type Product = {
   options: Option[]
   locale: string
   timeZone: string
+  coverImageUrl?: string
 }
 
 export type Reseller = {
@@ -176,6 +177,7 @@ export type Traveler = {
 
 export type Order = {
   id: string
+  supplierReference: string
   status: ORDER_STATUSES_UNION
   utcExpiresAt: string
   utcConfirmedAt: string
