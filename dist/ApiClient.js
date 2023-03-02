@@ -4,6 +4,7 @@ const moment = require('moment')
 const {isArray} = require('lodash')
 const deconvoluteUnitCounters = require('./deconvoluteUnitCounters')
 const {AxiosApiClient} = require('back-utils')
+const {formatAxiosResponse} = require('common-utils')
 
 const DATE_FORMAT = 'YYYY-MM-DD'
 
@@ -26,14 +27,7 @@ class ApiClient {
 
     if (debug) {
       axiosInstance.interceptors.response.use((response) => {
-        const config = response.config
-        console.log(
-          `REQUEST ${config.method} ${config.url}:
-${config.data}
-RESPONSE:
-${JSON.stringify(response.data)}
-`
-        )
+        console.log(formatAxiosResponse(response))
         return response
       })
     }
@@ -43,7 +37,7 @@ ${JSON.stringify(response.data)}
       retryDelay: axiosRetry.exponentialDelay,
     })
 
-    this.axiosApiClient = AxiosApiClient(axiosInstance)
+    this.axiosApiClient = new AxiosApiClient(axiosInstance)
   }
 
   getProducts() {
