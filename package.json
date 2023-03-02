@@ -1,6 +1,6 @@
 {
   "name": "ventrata-utils",
-  "version": "0.0.69",
+  "version": "0.0.70",
   "description": "Ventrata utils",
   "main": "dist/index.js",
   "typings": "dist/declares/main.d.ts",

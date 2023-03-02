@@ -1,3 +1,4 @@
+import {Currency} from 'common-utils'
 import {AVAILABILITY_STATUSES_UNION, BOOKING_STATUSES_UNION, ORDER_STATUSES_UNION, UNIT_TYPES_UNION} from './consts'
 
 export type Pricing = {
@@ -5,7 +6,7 @@ export type Pricing = {
   retail: number
   net: number
   currencyPrecision: number
-  currency: string
+  currency: Currency
 }
 
 export type Offer = {
@@ -145,14 +146,14 @@ export type StripePaymentIntent = {
   publishableKey: string
   clientSecret: string
   amount: number
-  currency: string
+  currency: Currency
 }
 
 export type StripeSetupIntent = {
   id: string
   publishableKey: string
   clientSecret: string
-  currency: string
+  currency: Currency
 }
 
 export type StripeCardPaymentPayload =

@@ -1,3 +1,4 @@
+import {Currency} from 'common-utils'
 import * as Entities from './entities'
 
 export type GetCalendar = {
@@ -81,7 +82,7 @@ export type CardPaymentPayload = CardPaymentStripePayload | CardPaymentExternalP
 
 export type CardPayment = CardPaymentPayload & {
   amount?: number
-  currency?: string
+  currency?: Currency
   notes?: string
 }
 
@@ -108,7 +109,7 @@ export type GetBookings = {
 }
 
 export type CreateOrder = {
-  currency: string
+  currency: Currency
   expirationMinutes: number
 }
 

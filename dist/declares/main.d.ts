@@ -16,6 +16,7 @@ export {
   getProductAndOption,
   mergeUnitItemsWithTravelers,
   deconvoluteUnitCounters,
+  getPricing,
 } from './utils'
 
 export {
