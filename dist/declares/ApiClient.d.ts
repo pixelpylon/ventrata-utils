@@ -5,7 +5,10 @@ import * as Params from './params'
 export declare class ApiClient {
   public readonly axiosApiClient: AxiosApiClient
 
-  constructor(apiKey: string, options?: {url?: string; capabilities?: string[]; debug?: boolean})
+  constructor(
+    apiKey: string,
+    options?: {url?: string; capabilities?: string[]; debug?: boolean; errorInterceptor?: (error: any) => void}
+  )
 
   getProducts(): Promise<Entities.Product[]>
 

@@ -4,13 +4,13 @@ const moment = require('moment')
 const {isArray} = require('lodash')
 const deconvoluteUnitCounters = require('./deconvoluteUnitCounters')
 const {AxiosApiClient} = require('back-utils')
-const {formatAxiosResponse} = require('common-utils')
+const {formatAxiosRequest} = require('common-utils')
 
 const DATE_FORMAT = 'YYYY-MM-DD'
 
 class ApiClient {
   constructor(apiKey, options) {
-    const {url, capabilities, debug} = options || {}
+    const {url, capabilities, debug, errorInterceptor} = options || {}
 
     const baseURL = url || 'https://api.ventrata.com/octo/'
 
@@ -27,7 +27,7 @@ class ApiClient {
 
     if (debug) {
       axiosInstance.interceptors.response.use((response) => {
-        console.log(formatAxiosResponse(response))
+        console.log(formatAxiosRequest(response.config, response))
         return response
       })
     }
@@ -37,7 +37,7 @@ class ApiClient {
       retryDelay: axiosRetry.exponentialDelay,
     })
 
-    this.axiosApiClient = new AxiosApiClient(axiosInstance)
+    this.axiosApiClient = new AxiosApiClient(axiosInstance, errorInterceptor)
   }
 
   getProducts() {
