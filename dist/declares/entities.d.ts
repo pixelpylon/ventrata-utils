@@ -48,6 +48,7 @@ export type Option = {
   default: boolean
   internalName: string
   reference: string | null
+  shortDescription: string | null
   title: string
   units: Unit[]
 }
