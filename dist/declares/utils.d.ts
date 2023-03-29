@@ -30,3 +30,4 @@ export function mergeUnitItemsWithTravelers(
   travelersInfoQuestionId: string
 ): Entities.UnitItemInput[]
 export function getPricing(data: Entities.Booking | Entities.Order): Entities.Pricing
+export function getOriginalPrice(data: Entities.Booking | Entities.Order): number

@@ -17,6 +17,7 @@ export {
   mergeUnitItemsWithTravelers,
   deconvoluteUnitCounters,
   getPricing,
+  getOriginalPrice,
 } from './utils'
 
 export {

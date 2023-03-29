@@ -2,9 +2,9 @@ import {Currency} from 'common-utils'
 import {AVAILABILITY_STATUSES_UNION, BOOKING_STATUSES_UNION, ORDER_STATUSES_UNION, UNIT_TYPES_UNION} from './consts'
 
 export type Pricing = {
-  original: number
-  retail: number
-  net: number
+  original: number | null
+  retail: number | null
+  net: number | null
   currencyPrecision: number
   currency: Currency
 }
@@ -34,13 +34,13 @@ export type UnitItem = {
 }
 
 export type Contact = {
-  fullName: string
-  firstName: string
-  lastName: string
-  emailAddress: string
-  phoneNumber: string
+  fullName: string | null
+  firstName: string | null
+  lastName: string | null
+  emailAddress: string | null
+  phoneNumber: string | null
   locales: string[]
-  country: string
+  country: string | null
 }
 
 export type Option = {
@@ -78,7 +78,7 @@ export type Product = {
   options: Option[]
   locale: string
   timeZone: string
-  coverImageUrl?: string
+  coverImageUrl: string | null
 }
 
 export type Reseller = {
@@ -88,7 +88,7 @@ export type Reseller = {
 
 export type Booking = {
   supplierReference: string
-  resellerReference?: string
+  resellerReference: string | null
   uuid: string
   availabilityId: string
   status: BOOKING_STATUSES_UNION
@@ -105,8 +105,8 @@ export type Booking = {
   utcCreatedAt: string
   offer: Offer | null
   cardPayment?: CardPayment
-  orderId?: string
-  primary?: boolean
+  orderId: string | null
+  primary: boolean | null
 }
 
 export type Availability = {
@@ -182,9 +182,9 @@ export type Order = {
   supplierReference: string
   status: ORDER_STATUSES_UNION
   utcExpiresAt: string
-  utcConfirmedAt: string
+  utcConfirmedAt: string | null
   bookings: Booking[]
   contact: Contact
-  cardPayment?: CardPayment
-  pricing?: Pricing
+  cardPayment: CardPayment | null
+  pricing: Pricing | null
 }

@@ -7,6 +7,7 @@ const getProductName = require('./getProductName')
 const getOptionName = require('./getOptionName')
 const getUnitName = require('./getUnitName')
 const getPricing = require('./getPricing')
+const getOriginalPrice = require('./getOriginalPrice')
 const getProductAndOption = require('./getProductAndOption')
 const deconvoluteUnitCounters = require('./deconvoluteUnitCounters')
 const mergeUnitItemsWithTravelers = require('./mergeUnitItemsWithTravelers')
@@ -41,7 +42,7 @@ module.exports = {
   deconvoluteUnitCounters,
   mergeUnitItemsWithTravelers,
   getPricing,
-
+  getOriginalPrice,
   combinedUnitCountersValidator,
   idUnitCountersValidator,
   typeUnitCountersValidator,
