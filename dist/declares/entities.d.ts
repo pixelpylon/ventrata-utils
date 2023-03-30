@@ -96,15 +96,16 @@ export type Booking = {
   product: Product
   option: Option
   unitItems: UnitItem[]
-  pricing?: Pricing
+  pricing: Pricing | null
   availability: Availability
   reseller: Reseller | null
   notes: string
   utcUpdatedAt: string
-  utcExpiresAt: string
+  utcExpiresAt: string | null
+  utcConfirmedAt: string | null
   utcCreatedAt: string
   offer: Offer | null
-  cardPayment?: CardPayment
+  cardPayment: CardPayment | null
   orderId: string | null
   primary: boolean | null
 }
@@ -181,7 +182,7 @@ export type Order = {
   id: string
   supplierReference: string
   status: ORDER_STATUSES_UNION
-  utcExpiresAt: string
+  utcExpiresAt: string | null
   utcConfirmedAt: string | null
   bookings: Booking[]
   contact: Contact
