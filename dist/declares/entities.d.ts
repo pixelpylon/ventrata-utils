@@ -48,8 +48,8 @@ export type Option = {
   default: boolean
   internalName: string
   reference: string | null
-  shortDescription: string | null
-  title: string
+  shortDescription?: string | null
+  title?: string
   units: Unit[]
 }
 
@@ -62,23 +62,23 @@ export type Unit = {
   type: UNIT_TYPES_UNION
   id: string
   internalName: string
-  reference: string
+  reference: string | null
   restrictions: Restriction
-  title: string
-  titlePlural: string
-  subtitle: string
-  pricingFrom: Pricing[]
+  title?: string
+  titlePlural?: string
+  subtitle?: string
+  pricingFrom?: Pricing[]
 }
 
 export type Product = {
   id: string
-  title: string
+  title?: string
   internalName: string
   reference: string
   options: Option[]
   locale: string
   timeZone: string
-  coverImageUrl: string | null
+  coverImageUrl?: string | null
 }
 
 export type Reseller = {
@@ -96,26 +96,26 @@ export type Booking = {
   product: Product
   option: Option
   unitItems: UnitItem[]
-  pricing: Pricing | null
+  pricing?: Pricing | null
   availability: Availability
   reseller: Reseller | null
-  notes: string
+  notes?: string | null
   utcUpdatedAt: string
   utcExpiresAt: string | null
   utcConfirmedAt: string | null
   utcCreatedAt: string
-  offer: Offer | null
-  cardPayment: CardPayment | null
+  offer?: Offer | null
+  cardPayment?: CardPayment | null
   orderId: string | null
   primary: boolean | null
 }
 
 export type Availability = {
   localDateTimeStart: string
-  utcCutoffAt: string
-  available: boolean
-  capacity: number
-  status: AVAILABILITY_STATUSES_UNION
+  utcCutoffAt?: string
+  available?: boolean
+  capacity?: number
+  status?: AVAILABILITY_STATUSES_UNION
   id: string
 }
 
@@ -186,6 +186,6 @@ export type Order = {
   utcConfirmedAt: string | null
   bookings: Booking[]
   contact: Contact
-  cardPayment: CardPayment | null
-  pricing: Pricing | null
+  cardPayment?: CardPayment | null
+  pricing?: Pricing | null
 }
