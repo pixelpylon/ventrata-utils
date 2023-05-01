@@ -8,16 +8,35 @@ const {formatAxiosRequest} = require('common-utils')
 
 const DATE_FORMAT = 'YYYY-MM-DD'
 
+const getCapabilitiesHeader = (capabilities) => {
+  if (!capabilities) {
+    return ''
+  }
+
+  if (!isArray(capabilities)) {
+    throw new Error(`Incorrect capabilities type '${typeof capabilities}'`)
+  }
+
+  return capabilities
+    .map((capability) => (capability.startsWith('octo/') ? capability : `octo/${capability}`))
+    .join(', ')
+}
+
 class ApiClient {
   constructor(apiKey, options) {
-    const {url, capabilities, debug, errorInterceptor} = options || {}
+    this.apiKey = apiKey
+    this.options = options || {}
+
+    const {url, capabilities, debug, errorInterceptor} = this.options
 
     const baseURL = url || 'https://api.ventrata.com/octo/'
 
     const headers = {Authorization: `Bearer ${apiKey}`}
 
-    if (isArray(capabilities) && capabilities.length > 0) {
-      headers['Octo-Capabilities'] = capabilities.join(', ')
+    const capabilitiesHeader = getCapabilitiesHeader(capabilities)
+
+    if (capabilitiesHeader) {
+      headers['Octo-Capabilities'] = capabilitiesHeader
     }
 
     const axiosInstance = axios.create({
@@ -38,6 +57,14 @@ class ApiClient {
     })
 
     this.axiosApiClient = new AxiosApiClient(axiosInstance, errorInterceptor)
+  }
+
+  withCapabilities(capabilities) {
+    const options = {
+      ...this.options,
+      capabilities,
+    }
+    return new ApiClient(this.apiKey, options)
   }
 
   getProducts() {

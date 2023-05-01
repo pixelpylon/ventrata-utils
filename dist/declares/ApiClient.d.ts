@@ -10,6 +10,8 @@ export declare class ApiClient {
     options?: {url?: string; capabilities?: string[]; debug?: boolean; errorInterceptor?: (error: any) => void}
   )
 
+  withCapabilities(capabilities: string[]): ApiClient
+
   getProducts(): Promise<Entities.Product[]>
 
   getProduct(productId: string): Promise<Entities.Product>
