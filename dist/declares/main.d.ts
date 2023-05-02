@@ -1,6 +1,6 @@
 export * as Entities from './entities'
 export * as Params from './params'
-export {ApiClient} from './ApiClient'
+export {ApiClient, Capability} from './ApiClient'
 export {
   getProductName,
   getOptionName,
