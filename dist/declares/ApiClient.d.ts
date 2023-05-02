@@ -33,16 +33,18 @@ export type Capability =
   | 'resources'
   | 'packages'
   | 'gifts'
+  | '*'
 
 export declare class ApiClient {
   public readonly axiosApiClient: AxiosApiClient
 
   constructor(
     apiKey: string,
-    options?: {url?: string; capabilities?: Capability[]; debug?: boolean; errorInterceptor?: (error: any) => void}
+    capabilities: Capability[],
+    options?: {url?: string; debug?: boolean; errorInterceptor?: (error: any) => void}
   )
 
-  withCapabilities(capabilities: Capability[]): ApiClient
+  withCapabilities(capabilities: Capability[], mode?: 'merge' | 'overwrite'): ApiClient
 
   getProducts(): Promise<Entities.Product[]>
 

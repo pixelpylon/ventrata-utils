@@ -11,10 +11,6 @@ const mergeCapabilities = require('./mergeCapabilities')
 const DATE_FORMAT = 'YYYY-MM-DD'
 
 const getCapabilitiesHeader = (capabilities) => {
-  if (!capabilities) {
-    return null
-  }
-
   if (!isArray(capabilities)) {
     throw new Error(`Incorrect capabilities type '${typeof capabilities}'`)
   }
@@ -23,11 +19,12 @@ const getCapabilitiesHeader = (capabilities) => {
 }
 
 class ApiClient {
-  constructor(apiKey, options) {
+  constructor(apiKey, capabilities, options) {
     this.apiKey = apiKey
+    this.capabilities = capabilities
     this.options = options || {}
 
-    const {url, capabilities, debug, errorInterceptor} = this.options
+    const {url, debug, errorInterceptor} = this.options
 
     const baseURL = url || 'https://api.ventrata.com/octo/'
 
@@ -59,21 +56,18 @@ class ApiClient {
     this.axiosApiClient = new AxiosApiClient(axiosInstance, errorInterceptor)
   }
 
-  withCapabilities(capabilities, mode = 'merge') {
+  withCapabilities(extraCapabilities, mode = 'merge') {
     if (!['merge', 'overwrite'].includes(mode)) {
       throw new Error(`Incorrect capabilities applying mode '${mode}'`)
     }
 
-    const options = {
-      ...this.options,
-      capabilities:
-        mode === 'overwrite' ? capabilities : mergeCapabilities(this.options.capabilities || [], capabilities),
-    }
-    return new ApiClient(this.apiKey, options)
+    const capabilities =
+      mode === 'overwrite' ? extraCapabilities : mergeCapabilities(this.capabilities, extraCapabilities)
+    return new ApiClient(this.apiKey, capabilities, this.options)
   }
 
   getProducts() {
-    return this.axiosApiClient.get(`products`).then(({data}) => data)
+    return this.axiosApiClient.get('products').then(({data}) => data)
   }
 
   getProduct(productId) {
