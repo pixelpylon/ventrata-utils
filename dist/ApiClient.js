@@ -6,6 +6,7 @@ const deconvoluteUnitCounters = require('./deconvoluteUnitCounters')
 const {AxiosApiClient} = require('back-utils')
 const {formatAxiosRequest} = require('common-utils')
 const normalizeCapability = require('./normalizeCapability')
+const mergeCapabilities = require('./mergeCapabilities')
 
 const DATE_FORMAT = 'YYYY-MM-DD'
 
@@ -58,10 +59,15 @@ class ApiClient {
     this.axiosApiClient = new AxiosApiClient(axiosInstance, errorInterceptor)
   }
 
-  withCapabilities(capabilities) {
+  withCapabilities(capabilities, mode = 'merge') {
+    if (!['merge', 'overwrite'].includes(mode)) {
+      throw new Error(`Incorrect capabilities applying mode '${mode}'`)
+    }
+
     const options = {
       ...this.options,
-      capabilities,
+      capabilities:
+        mode === 'overwrite' ? capabilities : mergeCapabilities(this.options.capabilities || [], capabilities),
     }
     return new ApiClient(this.apiKey, options)
   }

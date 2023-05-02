@@ -32,3 +32,4 @@ export function mergeUnitItemsWithTravelers(
 export function getPricing(data: Entities.Booking | Entities.Order): Entities.Pricing
 export function getOriginalPrice(data: Entities.Booking | Entities.Order): number
 export function normalizeCapability(capability: Capability): Capability
+export function mergeCapabilities(list1: Capability[], list2: Capability[]): Capability[]

@@ -19,6 +19,7 @@ export {
   getPricing,
   getOriginalPrice,
   normalizeCapability,
+  mergeCapabilities,
 } from './utils'
 
 export {
