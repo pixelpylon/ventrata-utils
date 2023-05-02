@@ -5,7 +5,7 @@ const {isArray} = require('lodash')
 const deconvoluteUnitCounters = require('./deconvoluteUnitCounters')
 const {AxiosApiClient} = require('back-utils')
 const {formatAxiosRequest} = require('common-utils')
-const {normalizeCapability} = require('./index')
+const {normalizeCapability} = require('./normalizeCapability')
 
 const DATE_FORMAT = 'YYYY-MM-DD'
 
