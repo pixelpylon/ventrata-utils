@@ -8,6 +8,7 @@ const getOptionName = require('./getOptionName')
 const getUnitName = require('./getUnitName')
 const getPricing = require('./getPricing')
 const getOriginalPrice = require('./getOriginalPrice')
+const normalizeCapability = require('./normalizeCapability')
 const getProductAndOption = require('./getProductAndOption')
 const deconvoluteUnitCounters = require('./deconvoluteUnitCounters')
 const mergeUnitItemsWithTravelers = require('./mergeUnitItemsWithTravelers')
@@ -43,6 +44,7 @@ module.exports = {
   mergeUnitItemsWithTravelers,
   getPricing,
   getOriginalPrice,
+  normalizeCapability,
   combinedUnitCountersValidator,
   idUnitCountersValidator,
   typeUnitCountersValidator,

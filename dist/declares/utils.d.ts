@@ -1,4 +1,4 @@
-import {ApiClient} from './ApiClient'
+import {ApiClient, Capability} from './ApiClient'
 import {UNIT_TYPES_UNION, VISITOR_AGES_UNION} from './consts'
 import * as Entities from './entities'
 
@@ -31,3 +31,4 @@ export function mergeUnitItemsWithTravelers(
 ): Entities.UnitItemInput[]
 export function getPricing(data: Entities.Booking | Entities.Order): Entities.Pricing
 export function getOriginalPrice(data: Entities.Booking | Entities.Order): number
+export function normalizeCapability(capability: Capability): Capability

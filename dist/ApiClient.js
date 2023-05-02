@@ -5,6 +5,7 @@ const {isArray} = require('lodash')
 const deconvoluteUnitCounters = require('./deconvoluteUnitCounters')
 const {AxiosApiClient} = require('back-utils')
 const {formatAxiosRequest} = require('common-utils')
+const {normalizeCapability} = require('./index')
 
 const DATE_FORMAT = 'YYYY-MM-DD'
 
@@ -17,9 +18,7 @@ const getCapabilitiesHeader = (capabilities) => {
     throw new Error(`Incorrect capabilities type '${typeof capabilities}'`)
   }
 
-  return capabilities
-    .map((capability) => (capability.startsWith('octo/') ? capability : `octo/${capability}`))
-    .join(',')
+  return capabilities.map(normalizeCapability).join()
 }
 
 class ApiClient {

@@ -18,6 +18,7 @@ export {
   deconvoluteUnitCounters,
   getPricing,
   getOriginalPrice,
+  normalizeCapability,
 } from './utils'
 
 export {
