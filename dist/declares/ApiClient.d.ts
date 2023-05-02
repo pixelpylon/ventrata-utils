@@ -2,7 +2,7 @@ import {AxiosApiClient} from 'back-utils'
 import * as Entities from './entities'
 import * as Params from './params'
 
-type Capability =
+export type Capability =
   | 'octo/content'
   | 'octo/pricing'
   | 'octo/questions'
