@@ -2,15 +2,47 @@ import {AxiosApiClient} from 'back-utils'
 import * as Entities from './entities'
 import * as Params from './params'
 
+type Capability =
+  | 'octo/content'
+  | 'octo/pricing'
+  | 'octo/questions'
+  | 'octo/pickups'
+  | 'octo/adjustments'
+  | 'octo/offers'
+  | 'octo/cart'
+  | 'octo/cardPayments'
+  | 'octo/checkin'
+  | 'octo/webhooks'
+  | 'octo/mappings'
+  | 'octo/redemption'
+  | 'octo/resources'
+  | 'octo/packages'
+  | 'octo/gifts'
+  | 'content'
+  | 'pricing'
+  | 'questions'
+  | 'pickups'
+  | 'adjustments'
+  | 'offers'
+  | 'cart'
+  | 'cardPayments'
+  | 'checkin'
+  | 'webhooks'
+  | 'mappings'
+  | 'redemption'
+  | 'resources'
+  | 'packages'
+  | 'gifts'
+
 export declare class ApiClient {
   public readonly axiosApiClient: AxiosApiClient
 
   constructor(
     apiKey: string,
-    options?: {url?: string; capabilities?: string[]; debug?: boolean; errorInterceptor?: (error: any) => void}
+    options?: {url?: string; capabilities?: Capability[]; debug?: boolean; errorInterceptor?: (error: any) => void}
   )
 
-  withCapabilities(capabilities: string[]): ApiClient
+  withCapabilities(capabilities: Capability[]): ApiClient
 
   getProducts(): Promise<Entities.Product[]>
 
