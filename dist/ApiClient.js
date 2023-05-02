@@ -10,7 +10,7 @@ const DATE_FORMAT = 'YYYY-MM-DD'
 
 const getCapabilitiesHeader = (capabilities) => {
   if (!capabilities) {
-    return ''
+    return null
   }
 
   if (!isArray(capabilities)) {
@@ -19,7 +19,7 @@ const getCapabilitiesHeader = (capabilities) => {
 
   return capabilities
     .map((capability) => (capability.startsWith('octo/') ? capability : `octo/${capability}`))
-    .join(', ')
+    .join(',')
 }
 
 class ApiClient {
@@ -35,7 +35,7 @@ class ApiClient {
 
     const capabilitiesHeader = getCapabilitiesHeader(capabilities)
 
-    if (capabilitiesHeader) {
+    if (capabilitiesHeader !== null) {
       headers['Octo-Capabilities'] = capabilitiesHeader
     }
 
