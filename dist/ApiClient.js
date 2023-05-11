@@ -182,6 +182,7 @@ class ApiClient {
     notes,
     questionAnswers,
     offerCode,
+    adjustments,
   }) {
     if (!units && !unitItems) {
       throw new Error('Unit counters and unit items both are undefined')
@@ -198,6 +199,7 @@ class ApiClient {
         unitItems: unitItems || deconvoluteUnitCounters(units),
         questionAnswers,
         offerCode, // Possibly this doesn't work
+        adjustments,
       })
       .then(({data}) => data)
   }

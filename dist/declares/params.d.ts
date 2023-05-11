@@ -56,6 +56,7 @@ export type CreateBooking = {
   units?: Entities.IdUnitCounter[]
   unitItems?: Entities.UnitItemInput[]
   offerCode?: string
+  adjustments?: Entities.Adjustment[]
 }
 
 export type UpdateBooking = {

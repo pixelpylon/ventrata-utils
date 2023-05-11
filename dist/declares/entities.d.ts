@@ -33,6 +33,13 @@ export type UnitItem = {
   unit: Unit
 }
 
+export type Adjustment = {
+  per: 'booking' | 'unit'
+  amount: number
+  quantity: number
+  notes: string
+}
+
 export type Contact = {
   fullName: string | null
   firstName: string | null
