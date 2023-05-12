@@ -183,6 +183,7 @@ class ApiClient {
     questionAnswers,
     offerCode,
     adjustments,
+    currency,
   }) {
     if (!units && !unitItems) {
       throw new Error('Unit counters and unit items both are undefined')
@@ -200,6 +201,7 @@ class ApiClient {
         questionAnswers,
         offerCode, // Possibly this doesn't work
         adjustments,
+        currency,
       })
       .then(({data}) => data)
   }
@@ -215,7 +217,7 @@ class ApiClient {
       .then(({data}) => data)
   }
 
-  updateBooking({bookingUuid, productId, optionId, availabilityId, units, unitItems, notes, offerCode}) {
+  updateBooking({bookingUuid, productId, optionId, availabilityId, units, unitItems, notes, offerCode, adjustments}) {
     const getUnitItems = () => {
       if (unitItems) {
         return unitItems
@@ -237,6 +239,7 @@ class ApiClient {
         notes,
         unitItems: getUnitItems(),
         offerCode,
+        adjustments,
       })
       .then(({data}) => data)
   }

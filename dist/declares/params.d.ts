@@ -1,5 +1,6 @@
 import {Currency} from 'common-utils'
 import * as Entities from './entities'
+import {Adjustment} from './entities'
 
 export type GetCalendar = {
   productId: string
@@ -57,6 +58,7 @@ export type CreateBooking = {
   unitItems?: Entities.UnitItemInput[]
   offerCode?: string
   adjustments?: Entities.Adjustment[]
+  currency?: Currency
 }
 
 export type UpdateBooking = {
@@ -68,6 +70,7 @@ export type UpdateBooking = {
   unitItems?: Entities.UnitItemInput[]
   notes?: string
   offerCode?: string
+  adjustments?: Adjustment[]
 }
 
 export type CardPaymentExternalPayload = {
