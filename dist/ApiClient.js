@@ -257,8 +257,10 @@ class ApiClient {
       .then(({data}) => data)
   }
 
-  getOrder(orderId) {
-    return this.axiosApiClient.get('/orders/' + orderId).then(({data}) => data)
+  getOrder(args) {
+    const {orderId, gatewayId} = typeof args === 'string' ? {orderId: args} : args
+    const params = gatewayId ? {gatewayId} : undefined
+    return this.axiosApiClient.get('/orders/' + orderId, {params}).then(({data}) => data)
   }
 
   extendOrder({orderId, expirationMinutes}) {
@@ -269,12 +271,13 @@ class ApiClient {
       .then(({data}) => data)
   }
 
-  confirmOrder({orderId, contact, cardPayment, notes}) {
+  confirmOrder({orderId, contact, cardPayment, notes, gatewayId}) {
     return this.axiosApiClient
       .post(`/orders/${orderId}/confirm`, {
         contact,
         cardPayment,
         notes,
+        gatewayId,
       })
       .then(({data}) => data)
   }

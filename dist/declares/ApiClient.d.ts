@@ -1,6 +1,7 @@
 import {AxiosApiClient} from 'back-utils'
 import * as Entities from './entities'
 import * as Params from './params'
+import {GetOrder} from './params'
 
 export type Capability =
   | 'octo/content'
@@ -74,7 +75,7 @@ export declare class ApiClient {
 
   createOrder(params: Params.CreateOrder): Promise<Entities.Order>
 
-  getOrder(orderId: string): Promise<Entities.Order>
+  getOrder(params: Params.GetOrder): Promise<Entities.Order>
 
   extendOrder(params: Params.ExtendOrder): Promise<Entities.Order>
 
