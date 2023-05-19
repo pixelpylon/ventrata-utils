@@ -80,7 +80,7 @@ export type CardPaymentExternalPayload = {
 }
 
 export type CardPaymentStripePayload = {
-  gateway: 'stripe'
+  gateway: 'stripe' | string
   stripe: {paymentIntent: string} | {setupIntent: string} | {paymentMethod: string}
 }
 
