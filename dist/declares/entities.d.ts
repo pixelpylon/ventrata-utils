@@ -1,5 +1,5 @@
 import {Currency} from 'common-utils'
-import {AVAILABILITY_STATUSES, BOOKING_STATUSES, ORDER_STATUSES, UNIT_TYPES} from './types'
+import {AVAILABILITY_STATUSES_UNION, BOOKING_STATUSES_UNION, ORDER_STATUSES_UNION, UNIT_TYPES_UNION} from './consts'
 
 export type Pricing = {
   original: number | null
@@ -66,7 +66,7 @@ export type Restriction = {
 }
 
 export type Unit = {
-  type: UNIT_TYPES
+  type: UNIT_TYPES_UNION
   id: string
   internalName: string
   reference: string | null
@@ -98,7 +98,7 @@ export type Booking = {
   resellerReference: string | null
   uuid: string
   availabilityId: string
-  status: BOOKING_STATUSES
+  status: BOOKING_STATUSES_UNION
   contact: Contact
   product: Product
   option: Option
@@ -122,7 +122,7 @@ export type Availability = {
   utcCutoffAt?: string
   available?: boolean
   capacity?: number
-  status?: AVAILABILITY_STATUSES
+  status?: AVAILABILITY_STATUSES_UNION
   id: string
 }
 
@@ -132,13 +132,13 @@ export type IdUnitCounter = {
 }
 
 export type TypeUnitCounter = {
-  type: UNIT_TYPES
+  type: UNIT_TYPES_UNION
   quantity: number
 }
 
 export type CombinedUnitCounter = {
   id: string
-  type: UNIT_TYPES
+  type: UNIT_TYPES_UNION
   quantity: number
 }
 
@@ -146,7 +146,7 @@ export type CalendarDay = {
   available: boolean
   capacity: number
   localDate: string
-  status: AVAILABILITY_STATUSES
+  status: AVAILABILITY_STATUSES_UNION
   vacancies: number
 }
 
@@ -188,7 +188,7 @@ export type Traveler = {
 export type Order = {
   id: string
   supplierReference: string
-  status: ORDER_STATUSES
+  status: ORDER_STATUSES_UNION
   utcExpiresAt: string | null
   utcConfirmedAt: string | null
   bookings: Booking[]

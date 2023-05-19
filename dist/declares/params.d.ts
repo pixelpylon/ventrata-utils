@@ -1,7 +1,7 @@
 import {Currency} from 'common-utils'
+import {SETTLEMENT_METHODS_UNION} from './consts'
 import * as Entities from './entities'
 import {Adjustment} from './entities'
-import {SETTLEMENT_METHODS} from './types'
 
 export type GetCalendar = {
   productId: string
@@ -60,7 +60,7 @@ export type CreateBooking = {
   offerCode?: string
   adjustments?: Entities.Adjustment[]
   currency?: Currency
-  settlementMethod?: SETTLEMENT_METHODS
+  settlementMethod?: SETTLEMENT_METHODS_UNION
 }
 
 export type UpdateBooking = {
@@ -119,7 +119,7 @@ export type GetOrder = string | {orderId: string; gatewayId?: string}
 export type CreateOrder = {
   currency: Currency
   expirationMinutes: number
-  settlementMethod?: SETTLEMENT_METHODS
+  settlementMethod?: SETTLEMENT_METHODS_UNION
 }
 
 export type ExtendOrder = {
