@@ -184,6 +184,7 @@ class ApiClient {
     offerCode,
     adjustments,
     currency,
+    settlementMethod,
   }) {
     if (!units && !unitItems) {
       throw new Error('Unit counters and unit items both are undefined')
@@ -202,6 +203,7 @@ class ApiClient {
         offerCode, // Possibly this doesn't work
         adjustments,
         currency,
+        settlementMethod,
       })
       .then(({data}) => data)
   }
@@ -248,11 +250,12 @@ class ApiClient {
     return this.axiosApiClient.delete(`/bookings/${bookingUuid}`).then(({data}) => data)
   }
 
-  createOrder({currency, expirationMinutes}) {
+  createOrder({currency, expirationMinutes, settlementMethod}) {
     return this.axiosApiClient
       .post('/orders', {
         currency,
         expirationMinutes,
+        settlementMethod,
       })
       .then(({data}) => data)
   }

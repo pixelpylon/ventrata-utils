@@ -1,5 +1,11 @@
 import {Currency} from 'common-utils'
-import {AVAILABILITY_STATUSES_UNION, BOOKING_STATUSES_UNION, ORDER_STATUSES_UNION, UNIT_TYPES_UNION} from './consts'
+import {
+  AVAILABILITY_STATUSES_UNION,
+  BOOKING_STATUSES_UNION,
+  NET_DISCOUNTS_UNION,
+  ORDER_STATUSES_UNION,
+  UNIT_TYPES_UNION,
+} from './consts'
 
 export type Pricing = {
   original: number | null
@@ -38,6 +44,7 @@ export type Adjustment = {
   amount: number
   quantity: number
   notes: string
+  netDiscount: NET_DISCOUNTS_UNION
 }
 
 export type Contact = {
