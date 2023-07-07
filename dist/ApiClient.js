@@ -28,12 +28,9 @@ class ApiClient {
 
     const baseURL = url || 'https://api.ventrata.com/octo/'
 
-    const headers = {Authorization: `Bearer ${apiKey}`}
-
-    const capabilitiesHeader = getCapabilitiesHeader(capabilities)
-
-    if (capabilitiesHeader !== null) {
-      headers['Octo-Capabilities'] = capabilitiesHeader
+    const headers = {
+      Authorization: `Bearer ${apiKey}`,
+      'Octo-Capabilities': getCapabilitiesHeader(capabilities),
     }
 
     const axiosInstance = axios.create({
