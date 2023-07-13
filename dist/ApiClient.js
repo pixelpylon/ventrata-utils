@@ -216,7 +216,18 @@ class ApiClient {
       .then(({data}) => data)
   }
 
-  updateBooking({bookingUuid, productId, optionId, availabilityId, units, unitItems, notes, offerCode, adjustments}) {
+  updateBooking({
+    bookingUuid,
+    productId,
+    optionId,
+    availabilityId,
+    units,
+    unitItems,
+    cardPayment,
+    notes,
+    offerCode,
+    adjustments,
+  }) {
     const getUnitItems = () => {
       if (unitItems) {
         return unitItems
@@ -239,6 +250,7 @@ class ApiClient {
         unitItems: getUnitItems(),
         offerCode,
         adjustments,
+        cardPayment,
       })
       .then(({data}) => data)
   }

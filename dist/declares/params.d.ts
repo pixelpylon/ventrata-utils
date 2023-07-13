@@ -73,6 +73,7 @@ export type UpdateBooking = {
   notes?: string
   offerCode?: string
   adjustments?: Adjustment[]
+  cardPayment?: CardPayment
 }
 
 export type CardPaymentExternalPayload = {
