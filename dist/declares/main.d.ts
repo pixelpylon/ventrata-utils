@@ -20,6 +20,7 @@ export {
   getOriginalPrice,
   normalizeCapability,
   mergeCapabilities,
+  getUnitPrice,
 } from './utils'
 
 export {

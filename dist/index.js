@@ -19,6 +19,7 @@ const ApiError = require('./ApiError')
 const {UNIT_TYPES, VISITOR_AGES, BOOKING_STATUSES, AVAILABILITY_STATUSES, DEFAULT_OPTION} = require('./consts')
 
 const {combinedUnitCountersValidator, idUnitCountersValidator, typeUnitCountersValidator} = require('./validators')
+const getUnitPrice = require('./getUnitPrice')
 
 module.exports = {
   getPhone,
@@ -50,4 +51,5 @@ module.exports = {
   combinedUnitCountersValidator,
   idUnitCountersValidator,
   typeUnitCountersValidator,
+  getUnitPrice,
 }
