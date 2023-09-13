@@ -6,6 +6,7 @@ import {
   ORDER_STATUSES_UNION,
   UNIT_TYPES_UNION,
 } from './consts'
+import {giftPayment} from './entities.d'
 
 export type Pricing = {
   original: number | null
@@ -18,6 +19,12 @@ export type Pricing = {
 export type Offer = {
   code: string
   title: string
+}
+
+export type GiftPayment = {
+  code: string
+  amount: number
+  currency: Currency
 }
 
 export type Answer = {
@@ -119,6 +126,7 @@ export type Booking = {
   utcConfirmedAt: string | null
   utcCreatedAt: string
   offer?: Offer | null
+  giftPayment?: GiftPayment | null
   cardPayment?: CardPayment | null
   orderId: string | null
   primary: boolean | null

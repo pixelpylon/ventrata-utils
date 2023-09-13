@@ -226,6 +226,7 @@ class ApiClient {
     cardPayment,
     notes,
     offerCode,
+    giftPayment,
     adjustments,
   }) {
     const getUnitItems = () => {
@@ -249,6 +250,7 @@ class ApiClient {
         notes,
         unitItems: getUnitItems(),
         offerCode,
+        giftPayment,
         adjustments,
         cardPayment,
       })
