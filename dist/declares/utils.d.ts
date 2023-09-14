@@ -1,4 +1,4 @@
-import {Currency} from 'common-utils'
+import {Currency} from '@exp1/common-utils'
 import {ApiClient, Capability} from './ApiClient'
 import {UNIT_TYPES_UNION, VISITOR_AGES_UNION} from './consts'
 import * as Entities from './entities'

@@ -1,4 +1,4 @@
-import {Currency} from 'common-utils'
+import {Currency} from '@exp1/common-utils'
 import {
   AVAILABILITY_STATUSES_UNION,
   BOOKING_STATUSES_UNION,

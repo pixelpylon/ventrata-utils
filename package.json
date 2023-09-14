@@ -1,5 +1,5 @@
 {
-  "name": "ventrata-utils",
+  "name": "@exp1/ventrata-utils",
   "version": "0.0.84",
   "description": "Ventrata utils",
   "main": "dist/index.js",
@@ -7,7 +7,8 @@
   "scripts": {
     "test": "mocha 'test/**/*.test.js'",
     "test:dev": "mocha 'test/**/*.test.js' --watch",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "artifactregistry-login": "npx google-artifactregistry-auth"
   },
   "repository": {
     "type": "git",
@@ -19,10 +20,10 @@
   "author": "Kosolapov Ivan <polzuka@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "@exp1/back-utils": "^0.0.19",
+    "@exp1/common-utils": "^0.0.73",
     "axios": "^1.5.0",
     "axios-retry": "^3.7.0",
-    "back-utils": "https://github.com/pixelpylon/back-utils/tarball/0.0.18",
-    "common-utils": "https://github.com/pixelpylon/common-utils/tarball/0.0.73",
     "lodash": "^4.17.21",
     "moment": "^2.29.1"
   },

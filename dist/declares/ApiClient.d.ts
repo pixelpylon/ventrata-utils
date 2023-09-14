@@ -1,7 +1,6 @@
-import {AxiosApiClient} from 'back-utils'
+import {AxiosApiClient} from '@exp1/back-utils'
 import * as Entities from './entities'
 import * as Params from './params'
-import {GetOrder} from './params'
 
 export type Capability =
   | 'octo/content'

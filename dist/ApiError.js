@@ -1,3 +1,3 @@
-const {AxiosApiError} = require('common-utils')
+const {AxiosApiError} = require('@exp1/common-utils')
 
 module.exports = AxiosApiError

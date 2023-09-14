@@ -1,4 +1,4 @@
-const {parsePhone} = require('common-utils')
+const {parsePhone} = require('@exp1/common-utils')
 
 const getPhone = (contact) => {
   if (contact.phoneNumber) {

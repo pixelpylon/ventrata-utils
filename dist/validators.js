@@ -1,4 +1,4 @@
-const {validate} = require('common-utils')
+const {validate} = require('@exp1/common-utils')
 const {UNIT_TYPES} = require('./consts')
 
 const UNIT_ID_FORMAT = /^unit_[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/

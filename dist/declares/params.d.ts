@@ -1,4 +1,4 @@
-import {Currency} from 'common-utils'
+import {Currency} from '@exp1/common-utils'
 import {SETTLEMENT_METHODS_UNION} from './consts'
 import * as Entities from './entities'
 import {Adjustment} from './entities'
