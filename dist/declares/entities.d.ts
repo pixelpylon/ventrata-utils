@@ -6,7 +6,6 @@ import {
   ORDER_STATUSES_UNION,
   UNIT_TYPES_UNION,
 } from './consts'
-import {giftPayment} from './entities.d'
 
 export type Pricing = {
   original: number | null
