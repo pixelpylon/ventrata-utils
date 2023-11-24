@@ -1,6 +1,6 @@
 {
   "name": "@exp1/ventrata-utils",
-  "version": "0.0.85",
+  "version": "0.0.86",
   "description": "Ventrata utils",
   "main": "dist/index.js",
   "typings": "dist/declares/main.d.ts",
@@ -20,8 +20,8 @@
   "author": "Kosolapov Ivan <polzuka@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "@exp1/back-utils": "^0.0.19",
-    "@exp1/common-utils": "^0.0.73",
+    "@exp1/back-utils": "^0.0.24",
+    "@exp1/common-utils": "^0.0.80",
     "axios": "^1.5.0",
     "axios-retry": "^3.7.0",
     "lodash": "^4.17.21",
