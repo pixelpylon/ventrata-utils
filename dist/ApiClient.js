@@ -182,6 +182,7 @@ class ApiClient {
     adjustments,
     currency,
     settlementMethod,
+    emailReceipt,
   }) {
     if (!units && !unitItems) {
       throw new Error('Unit counters and unit items both are undefined')
@@ -201,6 +202,7 @@ class ApiClient {
         adjustments,
         currency,
         settlementMethod,
+        emailReceipt,
       })
       .then(({data}) => data)
   }
@@ -228,6 +230,7 @@ class ApiClient {
     offerCode,
     giftPayment,
     adjustments,
+    emailReceipt,
   }) {
     const getUnitItems = () => {
       if (unitItems) {
@@ -253,6 +256,7 @@ class ApiClient {
         giftPayment,
         adjustments,
         cardPayment,
+        emailReceipt,
       })
       .then(({data}) => data)
   }

@@ -61,6 +61,7 @@ export type CreateBooking = {
   adjustments?: Entities.Adjustment[]
   currency?: Currency
   settlementMethod?: SETTLEMENT_METHODS_UNION
+  emailReceipt?: boolean
 }
 
 export type UpdateBooking = {
@@ -75,6 +76,7 @@ export type UpdateBooking = {
   adjustments?: Adjustment[]
   cardPayment?: GiftPayment
   giftPayment?: CardPayment
+  emailReceipt?: boolean
 }
 
 export type GiftPayment = {
