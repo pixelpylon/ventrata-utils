@@ -4,6 +4,7 @@ import {UNIT_TYPES_UNION, VISITOR_AGES_UNION} from './consts'
 import * as Entities from './entities'
 
 export type UnitMapping = {[key in UNIT_TYPES_UNION]: string}
+export type UnitCounterMap = {[key in VISITOR_AGES_UNION]: number}
 
 export function getProductName(product: Entities.Product): string
 export function getOptionName(option: Entities.Option): string
@@ -15,10 +16,10 @@ export function idifyUnitCounters(
   unitMapping: UnitMapping
 ): Entities.CombinedUnitCounter[]
 export function unitItemsToUnitCounters(unitItems: Entities.UnitItem[]): Entities.CombinedUnitCounter[]
-export function getEmptyVisitorCounters(): {[key in VISITOR_AGES_UNION]: number}
-export function countVisitors(booking: Entities.Booking): {[key in VISITOR_AGES_UNION]: number}
-export function getVisitorCountersWithoutInfants(booking: Entities.Booking): {[key in VISITOR_AGES_UNION]: number}
-export function formatVisitorCounters(counters: {[key in VISITOR_AGES_UNION]: number}): string
+export function getEmptyVisitorCounters(): UnitCounterMap
+export function countVisitors(booking: Entities.Booking): UnitCounterMap
+export function getVisitorCountersWithoutInfants(counters: UnitCounterMap): UnitCounterMap
+export function formatVisitorCounters(counters: UnitCounterMap): string
 export function getProductAndOption(
   ventrata: ApiClient,
   productId: string,
