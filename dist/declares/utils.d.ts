@@ -1,10 +1,8 @@
 import {Currency} from '@exp1/common-utils'
-import {ApiClient, Capability} from './ApiClient'
-import {UNIT_TYPES_UNION, VISITOR_AGES_UNION} from './consts'
-import * as Entities from './entities'
-
-export type UnitMapping = {[key in UNIT_TYPES_UNION]: string}
-export type UnitCounterMap = {[key in VISITOR_AGES_UNION]: number}
+import {ApiClient, Capability} from './ApiClient.d'
+import {UNIT_TYPES_UNION} from './consts.d'
+import * as Entities from './entities.d'
+import {UnitCounterMap, UnitMapping} from './params.d'
 
 export function getProductName(product: Entities.Product): string
 export function getOptionName(option: Entities.Option): string

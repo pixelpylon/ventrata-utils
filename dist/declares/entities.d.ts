@@ -5,7 +5,7 @@ import {
   NET_DISCOUNTS_UNION,
   ORDER_STATUSES_UNION,
   UNIT_TYPES_UNION,
-} from './consts'
+} from './consts.d'
 
 export type Pricing = {
   original: number | null
@@ -13,6 +13,11 @@ export type Pricing = {
   net: number | null
   currencyPrecision: number
   currency: Currency
+}
+
+export type UnitPricing = Pricing & {
+  unitId: string
+  unitType: UNIT_TYPES_UNION
 }
 
 export type Offer = {
@@ -138,6 +143,7 @@ export type Availability = {
   capacity?: number
   status?: AVAILABILITY_STATUSES_UNION
   id: string
+  unitPricing?: UnitPricing[]
 }
 
 export type IdUnitCounter = {

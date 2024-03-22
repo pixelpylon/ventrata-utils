@@ -1,6 +1,6 @@
-export * as Entities from './entities'
-export * as Params from './params'
-export {ApiClient, Capability} from './ApiClient'
+export * as Entities from './entities.d'
+export * as Params from './params.d'
+export {ApiClient, Capability} from './ApiClient.d'
 export {
   getProductName,
   getOptionName,
@@ -21,7 +21,7 @@ export {
   normalizeCapability,
   mergeCapabilities,
   getUnitPrice,
-} from './utils'
+} from './utils.d'
 
 export {
   AVAILABILITY_STATUSES,
@@ -31,6 +31,9 @@ export {
   VISITOR_AGES,
   SETTLEMENT_METHODS,
   NET_DISCOUNTS,
+} from './consts.d'
+
+export type {
   AVAILABILITY_STATUSES_UNION,
   BOOKING_STATUSES_UNION,
   ORDER_STATUSES_UNION,
@@ -39,6 +42,6 @@ export {
   SETTLEMENT_METHODS_UNION,
   NET_DISCOUNTS_UNION,
   DEFAULT_OPTION,
-} from './consts'
+} from './consts.d'
 
-export {typeUnitCountersValidator, idUnitCountersValidator, combinedUnitCountersValidator} from './validators'
+export {typeUnitCountersValidator, idUnitCountersValidator, combinedUnitCountersValidator} from './validators.d'

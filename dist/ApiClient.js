@@ -115,7 +115,7 @@ class ApiClient {
       .then(({data}) => data)
   }
 
-  getAvailabilities({productId, optionId, units, localDateStart, localDateEnd, offerCode}) {
+  getAvailabilities({productId, optionId, units, localDateStart, localDateEnd, offerCode, currency}) {
     return this.axiosApiClient
       .post(`availability`, {
         productId,
@@ -124,8 +124,25 @@ class ApiClient {
         localDateEnd,
         units,
         offerCode,
+        currency,
       })
       .then(({data}) => data)
+  }
+
+  async getAvailability({productId, optionId, units, availabilityId, offerCode, currency}) {
+    const availabilities = await this.axiosApiClient
+      .post(`availability`, {
+        productId,
+        optionId,
+        localDateStart: availabilityId,
+        localDateEnd: availabilityId,
+        units,
+        offerCode,
+        currency,
+      })
+      .then(({data}) => data)
+
+    return availabilities > 0 ? availabilities[0] : null
   }
 
   getMonthCalendar({productId, optionId, units, year, month}) {
@@ -141,7 +158,7 @@ class ApiClient {
     })
   }
 
-  getMonthAvailabilities({productId, optionId, units, year, month, offerCode}) {
+  getMonthAvailabilities({productId, optionId, units, year, month, offerCode, currency}) {
     const startDate = moment({year, month, date: 1})
     const endDate = moment({year, month, date: startDate.daysInMonth()})
 
@@ -152,10 +169,11 @@ class ApiClient {
       localDateEnd: endDate.format(DATE_FORMAT),
       units,
       offerCode,
+      currency,
     })
   }
 
-  getDateAvailabilities({productId, optionId, units, month, year, date, offerCode}) {
+  getDateAvailabilities({productId, optionId, units, month, year, date, offerCode, currency}) {
     const localDate = moment({year, month, date}).format(DATE_FORMAT)
 
     return this.getAvailabilities({
@@ -165,6 +183,7 @@ class ApiClient {
       localDateEnd: localDate,
       units,
       offerCode,
+      currency,
     })
   }
 

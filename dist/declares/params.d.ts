@@ -1,7 +1,6 @@
 import {Currency} from '@exp1/common-utils'
-import {SETTLEMENT_METHODS_UNION} from './consts'
-import * as Entities from './entities'
-import {Adjustment} from './entities'
+import {SETTLEMENT_METHODS_UNION, UNIT_TYPES_UNION, VISITOR_AGES_UNION} from './consts.d'
+import * as Entities from './entities.d'
 
 export type GetCalendar = {
   productId: string
@@ -22,20 +21,31 @@ export type GetMonthCalendar = {
 export type GetAvailabilities = {
   productId: string
   optionId: string
-  units?: Entities.IdUnitCounter[]
   localDateStart: string
   localDateEnd: string
+  units?: Entities.IdUnitCounter[]
   offerCode?: string
+  currency?: Currency
+}
+
+export type GetAvailability = {
+  productId: string
+  optionId: string
+  availabilityId: string
+  units?: Entities.IdUnitCounter[]
+  offerCode?: string
+  currency?: Currency
 }
 
 export type GetDateAvailabilities = {
   productId: string
   optionId: string
-  units?: Entities.IdUnitCounter[]
   year: number
   month: number
   date: number
+  units?: Entities.IdUnitCounter[]
   offerCode?: string
+  currency?: Currency
 }
 
 export type GetMonthAvailabilities = {
@@ -45,6 +55,7 @@ export type GetMonthAvailabilities = {
   year: number
   month: number
   offerCode?: string
+  currency?: Currency
 }
 
 export type CreateBooking = {
@@ -73,7 +84,7 @@ export type UpdateBooking = {
   unitItems?: Entities.UnitItemInput[]
   notes?: string
   offerCode?: string
-  adjustments?: Adjustment[]
+  adjustments?: Entities.Adjustment[]
   cardPayment?: GiftPayment
   giftPayment?: CardPayment
   emailReceipt?: boolean
@@ -87,9 +98,11 @@ export type CardPaymentExternalPayload = {
   gateway: 'external'
 }
 
+type StripeInfo = {paymentIntent: string} | {setupIntent: string} | {paymentMethod: string}
+
 export type CardPaymentStripePayload = {
   gateway: 'stripe' | string
-  stripe: {paymentIntent: string} | {setupIntent: string} | {paymentMethod: string}
+  stripe: StripeInfo
 }
 
 export type CardPaymentPayload = CardPaymentStripePayload | CardPaymentExternalPayload
@@ -142,3 +155,6 @@ export type ConfirmOrder = {
   cardPayment?: CardPayment
   gatewayId?: string
 }
+
+export type UnitMapping = {[key in UNIT_TYPES_UNION]: string}
+export type UnitCounterMap = {[key in VISITOR_AGES_UNION]: number}
