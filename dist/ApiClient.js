@@ -1,7 +1,7 @@
 const axios = require('axios')
 const axiosRetry = require('axios-retry')
 const moment = require('moment')
-const {isArray} = require('lodash')
+const {isArray, find} = require('lodash')
 const deconvoluteUnitCounters = require('./deconvoluteUnitCounters')
 const {AxiosApiClient} = require('@exp1/back-utils')
 const {formatAxiosRequest} = require('@exp1/common-utils')
@@ -142,7 +142,7 @@ class ApiClient {
       })
       .then(({data}) => data)
 
-    return availabilities > 0 ? availabilities[0] : null
+    return find(availabilities, {id: availabilityId}) || null
   }
 
   getMonthCalendar({productId, optionId, units, year, month}) {
