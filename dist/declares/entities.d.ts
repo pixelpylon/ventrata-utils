@@ -102,7 +102,7 @@ export type Product = {
   reference: string
   options: Option[]
   locale: string
-  location: string
+  location?: string | null
   timeZone: string
   coverImageUrl?: string | null
 }
