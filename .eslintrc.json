@@ -7,7 +7,6 @@
         "mocha": true
       },
       "parserOptions": {
-        // Required for certain syntax usages
         "ecmaVersion": 9
       },
       "plugins": ["promise", "require-path-exists"],
