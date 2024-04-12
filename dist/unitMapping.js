@@ -1,5 +1,3 @@
-const {countBy} = require('lodash')
-
 function getUnitMapping(optionUnits) {
   return optionUnits.reduce((result, unit) => {
     return {...result, [unit.type]: unit.id}

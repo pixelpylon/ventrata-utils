@@ -8,17 +8,11 @@ const getOptionName = require('./getOptionName')
 const getUnitName = require('./getUnitName')
 const getPricing = require('./getPricing')
 const getOriginalPrice = require('./getOriginalPrice')
-const normalizeCapability = require('./normalizeCapability')
-const mergeCapabilities = require('./mergeCapabilities')
-const getProductAndOption = require('./getProductAndOption')
 const deconvoluteUnitCounters = require('./deconvoluteUnitCounters')
 const mergeUnitItemsWithTravelers = require('./mergeUnitItemsWithTravelers')
-const {getUnitMapping, getUnitMapper, unitItemsToUnitCounters, idifyUnitCounters} = require('./unitMapping')
-const ApiClient = require('./ApiClient')
-const {UNIT_TYPES, VISITOR_AGES, BOOKING_STATUSES, AVAILABILITY_STATUSES, DEFAULT_OPTION} = require('./consts')
-
-const {combinedUnitCountersValidator, idUnitCountersValidator, typeUnitCountersValidator} = require('./validators')
 const getUnitPrice = require('./getUnitPrice')
+const {getUnitMapping, getUnitMapper, unitItemsToUnitCounters, idifyUnitCounters} = require('./unitMapping')
+const {UNIT_TYPES, VISITOR_AGES, BOOKING_STATUSES, AVAILABILITY_STATUSES, DEFAULT_OPTION} = require('./consts')
 
 module.exports = {
   getPhone,
@@ -26,7 +20,6 @@ module.exports = {
   getEmptyVisitorCounters,
   getVisitorCountersWithoutInfants,
   formatVisitorCounters,
-  ApiClient,
   VISITOR_AGES,
   BOOKING_STATUSES,
   AVAILABILITY_STATUSES,
@@ -39,15 +32,9 @@ module.exports = {
   getUnitMapper,
   idifyUnitCounters,
   unitItemsToUnitCounters,
-  getProductAndOption,
   deconvoluteUnitCounters,
   mergeUnitItemsWithTravelers,
   getPricing,
   getOriginalPrice,
-  normalizeCapability,
-  mergeCapabilities,
-  combinedUnitCountersValidator,
-  idUnitCountersValidator,
-  typeUnitCountersValidator,
   getUnitPrice,
 }

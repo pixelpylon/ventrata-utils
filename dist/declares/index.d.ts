@@ -1,6 +1,5 @@
 export * as Entities from './entities.d'
 export * as Params from './params.d'
-export {ApiClient, Capability} from './ApiClient.d'
 export {
   getProductName,
   getOptionName,
@@ -13,13 +12,10 @@ export {
   getEmptyVisitorCounters,
   getVisitorCountersWithoutInfants,
   countVisitors,
-  getProductAndOption,
   mergeUnitItemsWithTravelers,
   deconvoluteUnitCounters,
   getPricing,
   getOriginalPrice,
-  normalizeCapability,
-  mergeCapabilities,
   getUnitPrice,
 } from './utils.d'
 
@@ -43,5 +39,3 @@ export type {
   NET_DISCOUNTS_UNION,
   DEFAULT_OPTION,
 } from './consts.d'
-
-export {typeUnitCountersValidator, idUnitCountersValidator, combinedUnitCountersValidator} from './validators.d'

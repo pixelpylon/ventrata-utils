@@ -1,6 +1,6 @@
 {
   "name": "@exp1/ventrata-utils",
-  "version": "0.0.98",
+  "version": "0.0.99",
   "description": "Ventrata utils",
   "main": "dist/index.js",
   "typings": "dist/declares/index.d.ts",
@@ -20,14 +20,6 @@
   },
   "author": "Kosolapov Ivan <polzuka@gmail.com>",
   "license": "ISC",
-  "dependencies": {
-    "@exp1/back-utils": "^0.0.40",
-    "@exp1/common-utils": "^0.0.87",
-    "axios": "^1.5.0",
-    "axios-retry": "^3.7.0",
-    "lodash": "^4.17.21",
-    "moment": "^2.29.1"
-  },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.0.0",
     "eslint": "^8.1.0",
@@ -42,7 +34,17 @@
     "husky": "^8.0.0",
     "lint-staged": "^13.1.0",
     "mocha": "^10.0.0",
-    "prettier": "2.8.0"
+    "prettier": "2.8.0",
+    "@exp1/back-utils": "^0.0.40",
+    "@exp1/common-utils": "^0.0.87",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.1"
+  },
+  "peerDependencies": {
+    "@exp1/common-utils": ">=0.0.86",
+    "@exp1/back-utils": ">=0.0.40",
+    "lodash": ">=4.17.21",
+    "moment": ">=2.29.1"
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
