@@ -41,7 +41,7 @@ export declare class ApiClient {
   constructor(
     apiKey: string,
     capabilities: Capability[],
-    options?: {url?: string; debug?: boolean; errorInterceptor?: (error: any) => void}
+    options?: {url?: string; debug?: boolean; errorInterceptor?: (error: any) => void; retries?: number}
   )
 
   withCapabilities(capabilities: Capability[], mode?: 'merge' | 'overwrite'): ApiClient

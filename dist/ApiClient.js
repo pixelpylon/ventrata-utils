@@ -24,7 +24,7 @@ class ApiClient {
     this.capabilities = capabilities
     this.options = options || {}
 
-    const {url, debug, errorInterceptor} = this.options
+    const {url, debug, errorInterceptor, retries = 3} = this.options
 
     const baseURL = url || 'https://api.ventrata.com/octo/'
 
@@ -46,7 +46,7 @@ class ApiClient {
     }
 
     axiosRetry(axiosInstance, {
-      retries: 3,
+      retries,
       retryDelay: axiosRetry.exponentialDelay,
     })
 

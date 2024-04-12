@@ -15,7 +15,6 @@ const deconvoluteUnitCounters = require('./deconvoluteUnitCounters')
 const mergeUnitItemsWithTravelers = require('./mergeUnitItemsWithTravelers')
 const {getUnitMapping, getUnitMapper, unitItemsToUnitCounters, idifyUnitCounters} = require('./unitMapping')
 const ApiClient = require('./ApiClient')
-const ApiError = require('./ApiError')
 const {UNIT_TYPES, VISITOR_AGES, BOOKING_STATUSES, AVAILABILITY_STATUSES, DEFAULT_OPTION} = require('./consts')
 
 const {combinedUnitCountersValidator, idUnitCountersValidator, typeUnitCountersValidator} = require('./validators')
@@ -28,7 +27,6 @@ module.exports = {
   getVisitorCountersWithoutInfants,
   formatVisitorCounters,
   ApiClient,
-  ApiError,
   VISITOR_AGES,
   BOOKING_STATUSES,
   AVAILABILITY_STATUSES,

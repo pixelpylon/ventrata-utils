@@ -12,6 +12,7 @@
       "plugins": ["promise", "require-path-exists"],
       "extends": ["eslint:recommended", "google", "plugin:require-path-exists/recommended", "prettier"],
       "rules": {
+        "no-undef": "error",
         "require-jsdoc": "off"
       }
     },
