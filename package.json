@@ -1,8 +1,7 @@
 {
-  "name": "@exp1/ventrata-products-client",
-  "version": "0.0.1-1",
-  "description": "Ventrata utils",
-  "main": "dist/sources/index.js",
+  "name": "@exp1/ventrata-products-utils",
+  "version": "0.0.1",
+  "description": "Ventrata products utils",
   "typings": "dist/declares/index.d.ts",
   "scripts": {
     "lint": "eslint --fix --ext .js .",
@@ -14,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pixelpylon/ventrata-utils.git"
+    "url": "git+https://github.com/citytourdev/ventrata-products-utils.git"
   },
   "engines": {
     "node": ">=12"
@@ -35,13 +34,11 @@
     "husky": "^8.0.0",
     "lint-staged": "^13.1.0",
     "mocha": "^10.0.0",
-    "prettier": "2.8.0"
+    "prettier": "2.8.0",
+    "@exp1/ventrata-utils": "^0.0.99"
   },
-  "dependencies": {
-    "@exp1/back-utils": "^0.0.41",
-    "@exp1/common-utils": "^0.0.87",
-    "@exp1/ventrata-utils": "^0.0.99",
-    "lodash": "^4.17.21"
+  "peerDependencies": {
+    "@exp1/ventrata-utils": ">=0.0.99"
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
