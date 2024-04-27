@@ -3,16 +3,18 @@
     {
       "files": ["**/*.js"],
       "env": {
+        "es6": true,
         "node": true,
         "mocha": true
       },
       "parserOptions": {
-        "ecmaVersion": 9
+        "ecmaVersion": "latest",
+        "sourceType": "module"
       },
-      "plugins": ["promise", "require-path-exists"],
-      "extends": ["eslint:recommended", "google", "plugin:require-path-exists/recommended", "prettier"],
+      "plugins": ["promise", "import"],
+      "extends": ["eslint:recommended", "plugin:import/errors", "plugin:import/warnings", "google", "prettier"],
       "rules": {
-        "no-undef": "error",
+        "import/no-unresolved": [2, {"commonjs": true}],
         "require-jsdoc": "off"
       }
     },
@@ -33,12 +35,17 @@
       ],
       "parser": "@typescript-eslint/parser",
       "parserOptions": {
-        "ecmaVersion": 2018,
+        "ecmaVersion": "latest",
         "sourceType": "module"
       },
       "plugins": ["@typescript-eslint", "import"],
       "rules": {
         "require-jsdoc": "off"
+      },
+      "settings": {
+        "import/resolver": {
+          "typescript": {}
+        }
       }
     }
   ]

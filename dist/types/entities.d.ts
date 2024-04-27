@@ -5,7 +5,7 @@ import {
   NET_DISCOUNTS_UNION,
   ORDER_STATUSES_UNION,
   UNIT_TYPES_UNION,
-} from './consts.d'
+} from './consts'
 
 export type Pricing = {
   original: number | null

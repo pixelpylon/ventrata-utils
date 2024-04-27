@@ -1,5 +1,5 @@
 const expect = require('chai').expect
-const {unitItemsToUnitCounters} = require('../dist/unitMapping')
+const {unitItemsToUnitCounters} = require('../dist/src/unitMapping')
 
 describe('Converting unit items to unit counters', () => {
   it('correct converting', () => {

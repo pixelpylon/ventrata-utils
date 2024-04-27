@@ -1,5 +1,5 @@
-export * as Entities from './entities.d'
-export * as Params from './params.d'
+export * as Entities from './entities'
+export * as Params from './params'
 export {
   getProductName,
   getOptionName,
@@ -17,7 +17,7 @@ export {
   getPricing,
   getOriginalPrice,
   getUnitPrice,
-} from './utils.d'
+} from './utils'
 
 export {
   AVAILABILITY_STATUSES,
@@ -27,7 +27,7 @@ export {
   VISITOR_AGES,
   SETTLEMENT_METHODS,
   NET_DISCOUNTS,
-} from './consts.d'
+} from './consts'
 
 export type {
   AVAILABILITY_STATUSES_UNION,
@@ -38,4 +38,4 @@ export type {
   SETTLEMENT_METHODS_UNION,
   NET_DISCOUNTS_UNION,
   DEFAULT_OPTION,
-} from './consts.d'
+} from './consts'

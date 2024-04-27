@@ -1,7 +1,7 @@
 import {Currency} from '@exp1/common-utils'
-import {UNIT_TYPES_UNION} from './consts.d'
-import * as Entities from './entities.d'
-import {UnitCounterMap, UnitMapping} from './params.d'
+import {UNIT_TYPES_UNION} from './consts'
+import * as Entities from './entities'
+import {UnitCounterMap, UnitMapping} from './params'
 
 export function getProductName(product: Entities.Product): string
 export function getOptionName(option: Entities.Option): string

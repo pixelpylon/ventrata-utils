@@ -1,6 +1,6 @@
 import {Currency} from '@exp1/common-utils'
-import {SETTLEMENT_METHODS_UNION, UNIT_TYPES_UNION, VISITOR_AGES_UNION} from './consts.d'
-import * as Entities from './entities.d'
+import {SETTLEMENT_METHODS_UNION, UNIT_TYPES_UNION, VISITOR_AGES_UNION} from './consts'
+import * as Entities from './entities'
 
 export type GetCalendar = {
   productId: string
